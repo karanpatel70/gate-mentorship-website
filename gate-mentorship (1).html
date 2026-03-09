@@ -5,9 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GATEGuide — 1:1 Mentorship for GATE Aspirants</title>
+  <!-- Performance Optimizations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
     href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet">
+  </noscript>
 
   <style>
     :root {
@@ -88,15 +97,35 @@
     }
 
     .nav-links a {
+      position: relative;
       color: var(--muted);
       text-decoration: none;
       font-size: 0.9rem;
       font-weight: 500;
-      transition: color 0.2s;
+      transition: color 0.3s;
+      padding: 0.2rem 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
     }
 
     .nav-links a:hover {
       color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
     }
 
     .nav-cta {
@@ -105,10 +134,17 @@
       padding: 0.5rem 1.2rem;
       border-radius: 6px;
       font-weight: 600 !important;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    }
+
+    .nav-cta::after {
+      display: none;
     }
 
     .nav-cta:hover {
       background: #2563eb !important;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
     }
 
     .hamburger {
@@ -148,12 +184,37 @@
     }
 
     .mobile-menu a {
+      position: relative;
       color: var(--text);
       text-decoration: none;
       font-size: 1rem;
       font-weight: 500;
-      padding: 0.5rem 0;
+      padding: 0.5rem 1rem;
       border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .mobile-menu a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: rgba(59, 130, 246, 0.1);
+      z-index: -1;
+      transition: width 0.3s ease;
+    }
+
+    .mobile-menu a:hover {
+      color: var(--accent2);
+      padding-left: 1.5rem;
+    }
+
+    .mobile-menu a:hover::before {
+      width: 100%;
     }
 
     /* HERO */
@@ -1152,7 +1213,8 @@
     <ul class="nav-links">
       <li><a href="#how">How It Works</a></li>
       <li><a href="#resources">Resources</a></li>
-      <li><a href="#cheatsheets">Cheatsheets</a></li>
+      <li><a href="#subjects">Subjects</a></li>
+      <li><a href="#videos">Videos</a></li>
       <li><a href="#blog">Blog</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#book" class="nav-cta">Book Session →</a></li>
@@ -1164,7 +1226,8 @@
   <div class="mobile-menu" id="mobile-menu">
     <a href="#how" data-action="closeMenu">How It Works</a>
     <a href="#resources" data-action="closeMenu">Free Resources</a>
-    <a href="#cheatsheets" data-action="closeMenu">Cheatsheets</a>
+    <a href="#subjects" data-action="closeMenu">Subjects</a>
+    <a href="#videos" data-action="closeMenu">Videos</a>
     <a href="#blog" data-action="closeMenu">Blog</a>
     <a href="#pricing" data-action="closeMenu">Pricing</a>
     <a href="#book" data-action="closeMenu" style="color:var(--accent);font-weight:700;">📅 Book a Session →</a>
@@ -1175,7 +1238,7 @@
     <div class="hero-glow"></div>
     <div style="max-width:1200px; display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:4rem;">
       <div style="flex:1; min-width:300px; text-align:left;">
-        <div class="badge"><span class="badge-dot"></span>Accepting students for GATE 2026</div>
+        <div class="badge"><span class="badge-dot"></span>Accepting students for GATE 2027</div>
         <h1 style="text-align:left;">Crack <span class="blue">GATE</span> with<br>1:1 <span
             class="green">Guidance</span></h1>
         <p style="text-align:left; margin-left:0;">Personal mentorship from a GATE qualified CS student. Targeted help,
@@ -1193,7 +1256,7 @@
           <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
             src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE" title="GATE Mentorship Intro"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen></iframe>
+            allowfullscreen loading="lazy"></iframe>
         </div>
         <div
           style="position:absolute; -z-index:1; top:-20px; right:-20px; width:100%; height:100%; background:linear-gradient(135deg,var(--accent),var(--accent2)); opacity:0.2; filter:blur(40px); border-radius:50%;">
@@ -1261,7 +1324,8 @@
   <section class="mentor-section" id="mentor">
     <div class="section-tag">// your mentor</div>
     <div class="mentor-inner">
-      <img src="mentor.png" alt="Mentor" class="mentor-avatar" style="object-fit:cover; padding:0; background:none;">
+      <img src="mentor.png" alt="Mentor" class="mentor-avatar" loading="lazy"
+        style="object-fit:cover; padding:0; background:none;">
       <div>
         <div class="mentor-name">CS Graduate</div>
         <div class="mentor-role">GATE Qualified · M.Tech Aspirant</div>
@@ -1619,258 +1683,431 @@
           class="btn-wa">💬 Also ping me on WhatsApp</a>
       </p>
     </div>
-  <div class="divider"></div>
+    <div class="divider"></div>
 
-  <!-- INCLUDE NEW SECTIONS HERE -->
-  <!-- CHEATSHEETS SECTION -->
-  <section id="cheatsheets" style="background:var(--surface); border-top:1px solid var(--border);">
-    <div class="section-tag">// free downloads</div>
-    <div class="section-title">Free Revision Cheatsheets</div>
-    <div class="section-sub">Download my personal short notes and formula sheets for quick revision.</div>
-    
-    <div class="resources-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
-      
-      <!-- Cheatsheet 1 -->
-      <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; transition:all 0.2s; position:relative; overflow:hidden;">
-        <div>
-          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
-            <span style="font-size:1.8rem;">📑</span>
-            <span style="background:rgba(245,158,11,0.1); color:var(--accent3); padding:0.2rem 0.6rem; border-radius:100px; font-size:0.75rem; font-family:'JetBrains Mono',monospace; font-weight:600;">PDF · 2MB</span>
-          </div>
-          <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">Algorithms & Data Structures</h3>
-          <p style="font-size:0.85rem; color:var(--muted); line-height:1.6; margin-bottom:1.5rem;">Complete cheat sheet containing time complexities, core graph algorithms, and tree traversals.</p>
-        </div>
-        <a href="#" download class="btn-secondary" style="width:100%; justify-content:center; background:rgba(59,130,246,0.05); border-color:rgba(59,130,246,0.3); color:var(--accent); font-weight:600;">↓ Download PDF</a>
+    <!-- INCLUDE NEW SECTIONS HERE -->
+    <!-- SUBJECTS EXPLORER SECTION -->
+    <section id="subjects"
+      style="background:var(--surface); border-top:1px solid var(--border); overflow:hidden; position:relative; padding:0;">
+      <div style="padding: 5rem 5% 2rem 5%;">
+        <div class="section-tag">// syllabus & details</div>
+        <div class="section-title">Explore Subjects</div>
+        <div class="section-sub">Detailed syllabus, important topics, and weightage highlighted for each subject.</div>
       </div>
 
-      <!-- Cheatsheet 2 -->
-      <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; transition:all 0.2s; position:relative; overflow:hidden;">
-        <div>
-          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
-            <span style="font-size:1.8rem;">💾</span>
-            <span style="background:rgba(245,158,11,0.1); color:var(--accent3); padding:0.2rem 0.6rem; border-radius:100px; font-size:0.75rem; font-family:'JetBrains Mono',monospace; font-weight:600;">PDF · 1.5MB</span>
-          </div>
-          <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">DBMS Normalization & SQL</h3>
-          <p style="font-size:0.85rem; color:var(--muted); line-height:1.6; margin-bottom:1.5rem;">Quickly revise BCNF, 3NF, transaction serializability rules, and important SQL commands.</p>
-        </div>
-        <a href="#" download class="btn-secondary" style="width:100%; justify-content:center; background:rgba(59,130,246,0.05); border-color:rgba(59,130,246,0.3); color:var(--accent); font-weight:600;">↓ Download PDF</a>
-      </div>
-
-      <!-- Cheatsheet 3 -->
-      <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.5rem; display:flex; flex-direction:column; justify-content:space-between; transition:all 0.2s; position:relative; overflow:hidden;">
-        <div>
-          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
-            <span style="font-size:1.8rem;">⚙️</span>
-            <span style="background:rgba(245,158,11,0.1); color:var(--accent3); padding:0.2rem 0.6rem; border-radius:100px; font-size:0.75rem; font-family:'JetBrains Mono',monospace; font-weight:600;">PDF · 3MB</span>
-          </div>
-          <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">Operating Systems Mastery</h3>
-          <p style="font-size:0.85rem; color:var(--muted); line-height:1.6; margin-bottom:1.5rem;">Short notes on process synchronization, paging, virtual memory, and deadlocks.</p>
-        </div>
-        <a href="#" download class="btn-secondary" style="width:100%; justify-content:center; background:rgba(59,130,246,0.05); border-color:rgba(59,130,246,0.3); color:var(--accent); font-weight:600;">↓ Download PDF</a>
-      </div>
-
-    </div>
-  </section>
-  <div class="divider"></div>
-
-  <!-- MINI BLOG SECTION -->
-  <section id="blog" style="background:var(--bg); border-top:1px solid var(--border);">
-    <div class="section-tag">// exam strategy</div>
-    <div class="section-title">Insights & Strategy</div>
-    <div class="section-sub">Read my short guides on how to tackle specific subjects and manage your prep time.</div>
-    
-    <div class="resources-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
-      
-      <!-- Blog Post 1 -->
-      <a href="blog-post-1.html" class="resource-card" style="flex-direction:column; padding:0; border:1px solid var(--border); overflow:hidden;">
-        <div style="height:160px; width:100%; background:linear-gradient(135deg,#1e293b,#0f172a); display:flex; align-items:center; justify-content:center; position:relative;">
-           <span style="font-size:3rem; opacity:0.8;">🧠</span>
-           <div style="position:absolute; top:1rem; left:1rem; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); padding:0.2rem 0.6rem; border-radius:4px; font-size:0.7rem; color:var(--accent2); font-family:'JetBrains Mono',monospace;">STRATEGY</div>
-        </div>
-        <div style="padding:1.5rem;">
-          <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">3 Biggest Mistakes I Made in My First GATE Attempt</h3>
-          <p style="font-size:0.85rem; color:var(--muted); line-height:1.6; margin-bottom:1rem;">Avoid these common pitfalls that cost students precious marks, especially in the final 2 months of prep.</p>
-          <div style="font-size:0.8rem; color:var(--accent); font-weight:600; display:flex; align-items:center; gap:0.3rem;">Read Article <span style="font-size:1.2rem; line-height:1;">→</span></div>
-        </div>
-      </a>
-
-      <!-- Blog Post 2 -->
-      <a href="blog-post-2.html" class="resource-card" style="flex-direction:column; padding:0; border:1px solid var(--border); overflow:hidden;">
-        <div style="height:160px; width:100%; background:linear-gradient(135deg,#1e293b,#0f172a); display:flex; align-items:center; justify-content:center; position:relative;">
-           <span style="font-size:3rem; opacity:0.8;">⏱️</span>
-           <div style="position:absolute; top:1rem; left:1rem; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); padding:0.2rem 0.6rem; border-radius:4px; font-size:0.7rem; color:var(--accent); font-family:'JetBrains Mono',monospace;">TIME MANAGEMENT</div>
-        </div>
-        <div style="padding:1.5rem;">
-          <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">How to Master Algorithms & DS in 30 Days</h3>
-          <p style="font-size:0.85rem; color:var(--muted); line-height:1.6; margin-bottom:1rem;">A realistic, day-by-day plan to cover the highest-weightage subject in the GATE CS syllabus.</p>
-          <div style="font-size:0.8rem; color:var(--accent); font-weight:600; display:flex; align-items:center; gap:0.3rem;">Read Article <span style="font-size:1.2rem; line-height:1;">→</span></div>
-        </div>
-      </a>
-
-      <!-- Blog Post 3 -->
-      <a href="blog-post-3.html" class="resource-card" style="flex-direction:column; padding:0; border:1px solid var(--border); overflow:hidden;">
-        <div style="height:160px; width:100%; background:linear-gradient(135deg,#1e293b,#0f172a); display:flex; align-items:center; justify-content:center; position:relative;">
-           <span style="font-size:3rem; opacity:0.8;">📊</span>
-           <div style="position:absolute; top:1rem; left:1rem; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); padding:0.2rem 0.6rem; border-radius:4px; font-size:0.7rem; color:var(--accent3); font-family:'JetBrains Mono',monospace;">MOCK TESTS</div>
-        </div>
-        <div style="padding:1.5rem;">
-          <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">Analyzing Mock Tests: Quality Over Quantity</h3>
-          <p style="font-size:0.85rem; color:var(--muted); line-height:1.6; margin-bottom:1rem;">Giving 50 mock tests doesn't help if you don't analyze them. Here is my 3-step framework for mock analysis.</p>
-          <div style="font-size:0.8rem; color:var(--accent); font-weight:600; display:flex; align-items:center; gap:0.3rem;">Read Article <span style="font-size:1.2rem; line-height:1;">→</span></div>
-        </div>
-      </a>
-
-    </div>
-  </section>
-  <div class="divider"></div>
-
-  <!-- NEWSLETTER SECTION -->
-  <section id="newsletter" style="background:linear-gradient(135deg,var(--surface),#1e293b); border-top:1px solid var(--border); text-align:center; padding:6rem 5%;">
-    <div style="max-width:600px; margin:0 auto;">
-      <span style="font-size:3rem; margin-bottom:1rem; display:block;">📬</span>
-      <h2 style="font-size:clamp(1.5rem,3vw,2rem); font-weight:800; margin-bottom:1rem; color:var(--text);">Get Weekly GATE Strategies</h2>
-      <p style="font-size:0.95rem; color:var(--muted); line-height:1.7; margin-bottom:2rem;">Join 500+ aspirants getting my best study tips, free PDFs, and mock test analysis techniques delivered straight to their inbox every Sunday.</p>
-      
-      <form action="https://formspree.io/f/xdawkkyz" method="POST" style="display:flex; gap:0.5rem; max-width:450px; margin:0 auto; flex-wrap:wrap; justify-content:center;">
-        <input type="hidden" name="_subject" value="New Newsletter Subscriber!">
-        <input type="email" name="email" placeholder="Enter your email address..." required style="flex:1; min-width:250px; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:0.85rem 1.2rem; color:var(--text); font-family:'Sora',sans-serif; font-size:0.9rem; outline:none; transition:border-color 0.2s;">
-        <button type="submit" class="btn-primary" style="padding:0.85rem 1.5rem; white-space:nowrap;">Subscribe Now</button>
-      </form>
-      <div style="font-size:0.75rem; color:var(--muted); margin-top:1rem; font-family:'JetBrains Mono',monospace;">No spam ever. Unsubscribe anytime.</div>
-    </div>
-  </section>
-  <div class="divider"></div>
-
-  <!-- FOOTER -->
-  <footer>
-    <div style="font-size:1.2rem;font-weight:800;margin-bottom:1.5rem;">GATE<span
-        style="color:var(--accent)">Guide</span><span style="color:var(--accent2)">.</span></div>
-    <div class="footer-links">
-      <a href="#how">How It Works</a>
-      <a href="#resources">Free Resources</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
-      <a href="#book">Book Session</a>
-    </div>
-    <p>1:1 GATE Mentorship for CS/IT Students · Free & Paid Sessions · IIT/IISc Focused</p>
-    <p style="margin-top:0.5rem;font-size:0.75rem;">Made with ❤️ by a fellow GATE aspirant ·
-      <a href="mailto:your@gmail.com">karanpatel6898@gmail.com</a> ·
-      <a href="https://wa.me/916351023729" target="_blank" style="color:var(--wa)">WhatsApp</a> ·
-      <a href="https://www.linkedin.com/in/karan-patel-147117259/" target="_blank"
-        style="color:var(--accent);">LinkedIn</a>
-    </p>
-  </footer>
-
-  <!-- WHATSAPP FLOAT BUTTON -->
-  <div class="wa-tooltip">💬 Quick question? Chat now!</div>
-  <a class="wa-float"
-    href="https://wa.me/916351023729?text=Hi!%20I%20want%20to%20know%20more%20about%20GATE%20mentorship."
-    target="_blank" title="Chat on WhatsApp">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
-      <path
-        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-    </svg>
-  </a>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-
-      // Mobile menu
-      document.getElementById('hamburger').addEventListener('click', function () {
-        document.getElementById('mobile-menu').classList.toggle('open');
-      });
-      document.querySelectorAll('[data-action="closeMenu"]').forEach(el => {
-        el.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
-      });
-
-      // FAQ accordion
-      document.querySelectorAll('[data-action="toggleFAQ"]').forEach(btn => {
-        btn.addEventListener('click', function () {
-          const item = this.parentElement;
-          const isOpen = item.classList.contains('open');
-          document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-          if (!isOpen) item.classList.add('open');
-        });
-      });
-
-      // UPI panel toggle
-      document.querySelectorAll('[data-action="toggleUPI"]').forEach(btn => {
-        btn.addEventListener('click', function () {
-          const id = this.getAttribute('data-target');
-          const panel = document.getElementById(id);
-          const wasVisible = panel.classList.contains('visible');
-          document.querySelectorAll('.upi-panel.visible').forEach(p => p.classList.remove('visible'));
-          if (!wasVisible) {
-            panel.classList.add('visible');
-            setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+      <div class="subjects-slider"
+        style="display:flex; gap:1.5rem; overflow-x:auto; padding:0 5% 5rem 5%; scroll-snap-type:x mandatory; scrollbar-width:none; -ms-overflow-style:none;">
+        <style>
+          .subjects-slider::-webkit-scrollbar {
+            display: none;
           }
-        });
-      });
 
-      // Copy UPI ID
-      document.querySelectorAll('[data-action="copyUPI"]').forEach(el => {
-        el.addEventListener('click', function () {
-          const okId = this.getAttribute('data-target');
-          navigator.clipboard.writeText('6351023729@ptyes').then(() => {
-            const badge = document.getElementById(okId);
-            badge.style.display = 'inline';
-            setTimeout(() => badge.style.display = 'none', 2500);
-          }).catch(() => prompt('Copy your UPI ID:', '6351023729@ptyes'));
-        });
-      });
-
-      // Formspree AJAX form
-      const form = document.getElementById('gate-form');
-      if (form) {
-        form.addEventListener('submit', async function (e) {
-          e.preventDefault();
-          let valid = true;
-          const name = document.getElementById('f-name');
-          const email = document.getElementById('f-email');
-          const session = document.getElementById('f-session');
-
-          [name, email, session].forEach(el => el.classList.remove('input-invalid'));
-          document.querySelectorAll('.field-error').forEach(el => el.style.display = 'none');
-
-          if (!name.value.trim()) { name.classList.add('input-invalid'); document.getElementById('err-name').style.display = 'block'; valid = false; }
-          if (!email.value.trim() || !email.value.includes('@')) { email.classList.add('input-invalid'); document.getElementById('err-email').style.display = 'block'; valid = false; }
-          if (!session.value) { session.classList.add('input-invalid'); document.getElementById('err-session').style.display = 'block'; valid = false; }
-          if (!valid) return;
-
-          const btn = document.getElementById('submit-btn');
-          document.getElementById('btn-text').style.display = 'none';
-          document.getElementById('btn-loader').style.display = 'inline';
-          btn.disabled = true; btn.style.opacity = '0.7';
-          document.getElementById('form-error').style.display = 'none';
-
-          try {
-            const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
-            if (res.ok) {
-              document.getElementById('booking-form-box').style.display = 'none';
-              document.getElementById('success-box').style.display = 'block';
-              document.getElementById('success-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } else { throw new Error(); }
-          } catch {
-            document.getElementById('form-error').style.display = 'block';
-            document.getElementById('btn-text').style.display = 'inline';
-            document.getElementById('btn-loader').style.display = 'none';
-            btn.disabled = false; btn.style.opacity = '1';
+          .subject-box {
+            min-width: 320px;
+            flex-shrink: 0;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            scroll-snap-align: start;
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
           }
-        });
-      }
 
-      // Scroll fade-in animations
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) { e.target.style.animation = 'fadeUp 0.6s ease both'; obs.unobserve(e.target); }
+          .subject-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+          }
+
+          .subject-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+          }
+        </style>
+
+        <!-- Subject Box 1 -->
+        <div class="subject-box" style="border-top: 4px solid var(--accent);">
+          <div class="subject-icon">💻</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Algorithms & Data
+            Structures</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Detailed syllabus, important topics, and
+            weightage will be added here soon.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:var(--accent); font-weight:600;">Coming Soon →</span>
+          </div>
+        </div>
+
+        <!-- Subject Box 2 -->
+        <div class="subject-box" style="border-top: 4px solid var(--accent2);">
+          <div class="subject-icon">🗄️</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Database Management
+            Systems</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Detailed syllabus, important topics, and
+            weightage will be added here soon.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:var(--accent2); font-weight:600;">Coming Soon →</span>
+          </div>
+        </div>
+
+        <!-- Subject Box 3 -->
+        <div class="subject-box" style="border-top: 4px solid var(--accent3);">
+          <div class="subject-icon">⚙️</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Operating Systems</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Detailed syllabus, important topics, and
+            weightage will be added here soon.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:var(--accent3); font-weight:600;">Coming Soon →</span>
+          </div>
+        </div>
+
+        <!-- Subject Box 4 -->
+        <div class="subject-box" style="border-top: 4px solid #8b5cf6;">
+          <div class="subject-icon">🌐</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Computer Networks</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Detailed syllabus, important topics, and
+            weightage will be added here soon.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:#8b5cf6; font-weight:600;">Coming Soon →</span>
+          </div>
+        </div>
+
+        <!-- Subject Box 5 -->
+        <div class="subject-box" style="border-top: 4px solid #ec4899;">
+          <div class="subject-icon">📐</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Discrete Mathematics
+          </h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Detailed syllabus, important topics, and
+            weightage will be added here soon.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:#ec4899; font-weight:600;">Coming Soon →</span>
+          </div>
+        </div>
+
+        <!-- Subject Box 6 -->
+        <div class="subject-box" style="border-top: 4px solid #14b8a6;">
+          <div class="subject-icon">💻</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">TOC & Compilers</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Detailed syllabus, important topics, and
+            weightage will be added here soon.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:#14b8a6; font-weight:600;">Coming Soon →</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- LATEST VIDEOS SECTION -->
+    <section id="videos" style="background:var(--surface); border-top:1px solid var(--border);">
+      <div class="section-tag">// watch & learn</div>
+      <div class="section-title">Latest YouTube Videos</div>
+      <div class="section-sub">Regular GATE prep strategies, chapter summaries, and live QA directly from my channel.
+      </div>
+
+      <div class="resources-grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr));">
+
+        <!-- Video 1 -->
+        <div
+          style="background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:all 0.2s;">
+          <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+            <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+              src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" title="GATE Strategy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div style="padding:1.5rem;">
+            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">How to start GATE
+              2026 Preparation</h3>
+            <p style="font-size:0.85rem; color:var(--muted); line-height:1.6;">A complete roadmap from day 1 to the
+              final revision phase.</p>
+          </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div
+          style="background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:all 0.2s;">
+          <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+            <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+              src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" title="GATE Strategy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div style="padding:1.5rem;">
+            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">Top 5 Mistakes
+              Students Make in GATE CS</h3>
+            <p style="font-size:0.85rem; color:var(--muted); line-height:1.6;">Avoid these common pitfalls to boost your
+              score by 10+ marks.</p>
+          </div>
+        </div>
+
+        <!-- Video 3 -->
+        <div
+          style="background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:all 0.2s;">
+          <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+            <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+              src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" title="GATE Strategy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div style="padding:1.5rem;">
+            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">Data Structures:
+              Arrays vs Linked Lists</h3>
+            <p style="font-size:0.85rem; color:var(--muted); line-height:1.6;">Deep dive into time complexity and GATE
+              PYQs.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="text-align:center; margin-top:2.5rem;">
+        <a href="https://youtube.com/@YourChannel" target="_blank" class="btn-primary"
+          style="background:#dc2626; color:#fff;">
+          <span style="font-size:1.2rem; margin-right:0.5rem;">▶️</span> Subscribe to my Channel
+        </a>
+      </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- MINI BLOG SECTION -->
+    <section id="blog" style="background:var(--bg); border-top:1px solid var(--border);">
+      <div class="section-tag">// exam strategy</div>
+      <div class="section-title">Insights & Strategy</div>
+      <div class="section-sub">Read my short guides on how to tackle specific subjects and manage your prep time.</div>
+
+      <div class="resources-grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
+
+        <!-- Blog Post 1 -->
+        <a href="blog-post-1.html" class="resource-card"
+          style="flex-direction:column; padding:0; border:1px solid var(--border); overflow:hidden;">
+          <div
+            style="height:160px; width:100%; background:linear-gradient(135deg,#1e293b,#0f172a); display:flex; align-items:center; justify-content:center; position:relative;">
+            <span style="font-size:3rem; opacity:0.8;">🧠</span>
+            <div
+              style="position:absolute; top:1rem; left:1rem; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); padding:0.2rem 0.6rem; border-radius:4px; font-size:0.7rem; color:var(--accent2); font-family:'JetBrains Mono',monospace;">
+              STRATEGY</div>
+          </div>
+          <div style="padding:1.5rem;">
+            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">3 Biggest Mistakes I
+              Made in My First GATE Attempt</h3>
+            <p style="font-size:0.85rem; color:var(--muted); line-height:1.6; margin-bottom:1rem;">Avoid these common
+              pitfalls that cost students precious marks, especially in the final 2 months of prep.</p>
+            <div
+              style="font-size:0.8rem; color:var(--accent); font-weight:600; display:flex; align-items:center; gap:0.3rem;">
+              Read Article <span style="font-size:1.2rem; line-height:1;">→</span></div>
+          </div>
+        </a>
+
+        <!-- Blog Post 2 -->
+        <a href="blog-post-2.html" class="resource-card"
+          style="flex-direction:column; padding:0; border:1px solid var(--border); overflow:hidden;">
+          <div
+            style="height:160px; width:100%; background:linear-gradient(135deg,#1e293b,#0f172a); display:flex; align-items:center; justify-content:center; position:relative;">
+            <span style="font-size:3rem; opacity:0.8;">⏱️</span>
+            <div
+              style="position:absolute; top:1rem; left:1rem; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); padding:0.2rem 0.6rem; border-radius:4px; font-size:0.7rem; color:var(--accent); font-family:'JetBrains Mono',monospace;">
+              TIME MANAGEMENT</div>
+          </div>
+          <div style="padding:1.5rem;">
+            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">How to Master
+              Algorithms & DS in 30 Days</h3>
+            <p style="font-size:0.85rem; color:var(--muted); line-height:1.6; margin-bottom:1rem;">A realistic,
+              day-by-day plan to cover the highest-weightage subject in the GATE CS syllabus.</p>
+            <div
+              style="font-size:0.8rem; color:var(--accent); font-weight:600; display:flex; align-items:center; gap:0.3rem;">
+              Read Article <span style="font-size:1.2rem; line-height:1;">→</span></div>
+          </div>
+        </a>
+
+        <!-- Blog Post 3 -->
+        <a href="blog-post-3.html" class="resource-card"
+          style="flex-direction:column; padding:0; border:1px solid var(--border); overflow:hidden;">
+          <div
+            style="height:160px; width:100%; background:linear-gradient(135deg,#1e293b,#0f172a); display:flex; align-items:center; justify-content:center; position:relative;">
+            <span style="font-size:3rem; opacity:0.8;">📊</span>
+            <div
+              style="position:absolute; top:1rem; left:1rem; background:rgba(0,0,0,0.5); backdrop-filter:blur(4px); padding:0.2rem 0.6rem; border-radius:4px; font-size:0.7rem; color:var(--accent3); font-family:'JetBrains Mono',monospace;">
+              MOCK TESTS</div>
+          </div>
+          <div style="padding:1.5rem;">
+            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">Analyzing Mock
+              Tests: Quality Over Quantity</h3>
+            <p style="font-size:0.85rem; color:var(--muted); line-height:1.6; margin-bottom:1rem;">Giving 50 mock tests
+              doesn't help if you don't analyze them. Here is my 3-step framework for mock analysis.</p>
+            <div
+              style="font-size:0.8rem; color:var(--accent); font-weight:600; display:flex; align-items:center; gap:0.3rem;">
+              Read Article <span style="font-size:1.2rem; line-height:1;">→</span></div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- NEWSLETTER SECTION -->
+    <section id="newsletter"
+      style="background:linear-gradient(135deg,var(--surface),#1e293b); border-top:1px solid var(--border); text-align:center; padding:6rem 5%;">
+      <div style="max-width:600px; margin:0 auto;">
+        <span style="font-size:3rem; margin-bottom:1rem; display:block;">📬</span>
+        <h2 style="font-size:clamp(1.5rem,3vw,2rem); font-weight:800; margin-bottom:1rem; color:var(--text);">Get Weekly
+          GATE Strategies</h2>
+        <p style="font-size:0.95rem; color:var(--muted); line-height:1.7; margin-bottom:2rem;">Join 500+ aspirants
+          getting my best study tips, free PDFs, and mock test analysis techniques delivered straight to their inbox
+          every Sunday.</p>
+
+        <form action="https://formspree.io/f/xdawkkyz" method="POST"
+          style="display:flex; gap:0.5rem; max-width:450px; margin:0 auto; flex-wrap:wrap; justify-content:center;">
+          <input type="hidden" name="_subject" value="New Newsletter Subscriber!">
+          <input type="email" name="email" placeholder="Enter your email address..." required
+            style="flex:1; min-width:250px; background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:0.85rem 1.2rem; color:var(--text); font-family:'Sora',sans-serif; font-size:0.9rem; outline:none; transition:border-color 0.2s;">
+          <button type="submit" class="btn-primary" style="padding:0.85rem 1.5rem; white-space:nowrap;">Subscribe
+            Now</button>
+        </form>
+        <div style="font-size:0.75rem; color:var(--muted); margin-top:1rem; font-family:'JetBrains Mono',monospace;">No
+          spam ever. Unsubscribe anytime.</div>
+      </div>
+    </section>
+    <div class="divider"></div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div style="font-size:1.2rem;font-weight:800;margin-bottom:1.5rem;">GATE<span
+          style="color:var(--accent)">Guide</span><span style="color:var(--accent2)">.</span></div>
+      <div class="footer-links">
+        <a href="#how">How It Works</a>
+        <a href="#resources">Free Resources</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="#book">Book Session</a>
+      </div>
+      <p>1:1 GATE Mentorship for CS/IT Students · Free & Paid Sessions · IIT/IISc Focused</p>
+      <p style="margin-top:0.5rem;font-size:0.75rem;">Made with ❤️ by a fellow GATE aspirant ·
+        <a href="mailto:your@gmail.com">karanpatel6898@gmail.com</a> ·
+        <a href="https://wa.me/916351023729" target="_blank" style="color:var(--wa)">WhatsApp</a> ·
+        <a href="https://www.linkedin.com/in/karan-patel-147117259/" target="_blank"
+          style="color:var(--accent);">LinkedIn</a>
+      </p>
+    </footer>
+
+    <!-- WHATSAPP FLOAT BUTTON -->
+    <div class="wa-tooltip">💬 Quick question? Chat now!</div>
+    <a class="wa-float"
+      href="https://wa.me/916351023729?text=Hi!%20I%20want%20to%20know%20more%20about%20GATE%20mentorship."
+      target="_blank" title="Chat on WhatsApp">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+    </a>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+
+        // Mobile menu
+        document.getElementById('hamburger').addEventListener('click', function () {
+          document.getElementById('mobile-menu').classList.toggle('open');
         });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.step-card,.price-card,.testimonial,.resource-card,.faq-item').forEach(el => {
-        el.style.opacity = '0'; obs.observe(el);
+        document.querySelectorAll('[data-action="closeMenu"]').forEach(el => {
+          el.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('[data-action="toggleFAQ"]').forEach(btn => {
+          btn.addEventListener('click', function () {
+            const item = this.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+          });
+        });
+
+        // UPI panel toggle
+        document.querySelectorAll('[data-action="toggleUPI"]').forEach(btn => {
+          btn.addEventListener('click', function () {
+            const id = this.getAttribute('data-target');
+            const panel = document.getElementById(id);
+            const wasVisible = panel.classList.contains('visible');
+            document.querySelectorAll('.upi-panel.visible').forEach(p => p.classList.remove('visible'));
+            if (!wasVisible) {
+              panel.classList.add('visible');
+              setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+            }
+          });
+        });
+
+        // Copy UPI ID
+        document.querySelectorAll('[data-action="copyUPI"]').forEach(el => {
+          el.addEventListener('click', function () {
+            const okId = this.getAttribute('data-target');
+            navigator.clipboard.writeText('6351023729@ptyes').then(() => {
+              const badge = document.getElementById(okId);
+              badge.style.display = 'inline';
+              setTimeout(() => badge.style.display = 'none', 2500);
+            }).catch(() => prompt('Copy your UPI ID:', '6351023729@ptyes'));
+          });
+        });
+
+        // Formspree AJAX form
+        const form = document.getElementById('gate-form');
+        if (form) {
+          form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            let valid = true;
+            const name = document.getElementById('f-name');
+            const email = document.getElementById('f-email');
+            const session = document.getElementById('f-session');
+
+            [name, email, session].forEach(el => el.classList.remove('input-invalid'));
+            document.querySelectorAll('.field-error').forEach(el => el.style.display = 'none');
+
+            if (!name.value.trim()) { name.classList.add('input-invalid'); document.getElementById('err-name').style.display = 'block'; valid = false; }
+            if (!email.value.trim() || !email.value.includes('@')) { email.classList.add('input-invalid'); document.getElementById('err-email').style.display = 'block'; valid = false; }
+            if (!session.value) { session.classList.add('input-invalid'); document.getElementById('err-session').style.display = 'block'; valid = false; }
+            if (!valid) return;
+
+            const btn = document.getElementById('submit-btn');
+            document.getElementById('btn-text').style.display = 'none';
+            document.getElementById('btn-loader').style.display = 'inline';
+            btn.disabled = true; btn.style.opacity = '0.7';
+            document.getElementById('form-error').style.display = 'none';
+
+            try {
+              const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+              if (res.ok) {
+                document.getElementById('booking-form-box').style.display = 'none';
+                document.getElementById('success-box').style.display = 'block';
+                document.getElementById('success-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
+              } else { throw new Error(); }
+            } catch {
+              document.getElementById('form-error').style.display = 'block';
+              document.getElementById('btn-text').style.display = 'inline';
+              document.getElementById('btn-loader').style.display = 'none';
+              btn.disabled = false; btn.style.opacity = '1';
+            }
+          });
+        }
+
+        // Scroll fade-in animations
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) { e.target.style.animation = 'fadeUp 0.6s ease both'; obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.step-card,.price-card,.testimonial,.resource-card,.faq-item').forEach(el => {
+          el.style.opacity = '0'; obs.observe(el);
+        });
+
       });
-
-    });
-  </script>
+    </script>
 </body>
 
 </html>
