@@ -538,8 +538,10 @@
             border-radius: 16px;
             padding: 2rem;
             scroll-snap-align: start;
-            transition: transform 0.3s, border-color 0.3s;
+            transition: all 0.3s;
             position: relative;
+            text-decoration: none;
+            color: inherit;
           }
 
           .subject-box:hover {
@@ -562,82 +564,103 @@
           }
         </style>
 
-        <!-- Subject Box 1 -->
-        <div class="subject-box" style="border-top: 4px solid var(--accent);">
-          <div class="subject-icon">💻</div>
-          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Algorithms & Data
-            Structures</h3>
-          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Detailed syllabus, important topics, and
-            weightage will be added here soon.</p>
-          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
-            <span style="font-size:0.8rem; color:var(--accent); font-weight:600;">Coming Soon →</span>
-          </div>
-        </div>
-
-        <!-- Subject Box 2 -->
-        <div class="subject-box" style="border-top: 4px solid var(--accent2);">
-          <div class="subject-icon">🗄️</div>
-          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Database Management
-            Systems</h3>
-          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Detailed syllabus, important topics, and
-            weightage will be added here soon.</p>
-          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
-            <span style="font-size:0.8rem; color:var(--accent2); font-weight:600;">Coming Soon →</span>
-          </div>
-        </div>
-
-        <!-- Subject Box 3 -->
-        <div class="subject-box" style="border-top: 4px solid var(--accent3);">
-          <div class="subject-icon">⚙️</div>
-          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Operating Systems</h3>
-          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Detailed syllabus, important topics, and
-            weightage will be added here soon.</p>
-          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
-            <span style="font-size:0.8rem; color:var(--accent3); font-weight:600;">Coming Soon →</span>
-          </div>
-        </div>
-
-        <!-- Subject Box 4 -->
-        <div class="subject-box" style="border-top: 4px solid #8b5cf6;">
-          <div class="subject-icon">🌐</div>
-          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Computer Networks</h3>
-          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Detailed syllabus, important topics, and
-            weightage will be added here soon.</p>
-          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
-            <span style="font-size:0.8rem; color:#8b5cf6; font-weight:600;">Coming Soon →</span>
-          </div>
-        </div>
-
-        <!-- Subject Box 5 -->
-        <div class="subject-box" style="border-top: 4px solid #ec4899;">
+        <!-- Subject Box 1: Engineering Math -->
+        <a href="engineering-math.html" class="subject-box" style="border-top: 4px solid var(--accent);">
           <div class="subject-icon">📐</div>
-          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Discrete Mathematics
-          </h3>
-          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Detailed syllabus, important topics, and
-            weightage will be added here soon.</p>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Engineering Mathematics</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Discrete Math, Linear Algebra, Calculus, and Probability. A high-weightage section (13-15 marks).</p>
           <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
-            <span style="font-size:0.8rem; color:#ec4899; font-weight:600;">Coming Soon →</span>
+            <span style="font-size:0.8rem; color:var(--accent); font-weight:600;">Explore Details →</span>
           </div>
-        </div>
+        </a>
 
-        <!-- Subject Box 6 -->
-        <div class="subject-box" style="border-top: 4px solid #14b8a6;">
-          <div class="subject-icon">💻</div>
-          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">TOC & Compilers</h3>
-          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Detailed syllabus, important topics, and
-            weightage will be added here soon.</p>
-          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
-            <span style="font-size:0.8rem; color:#14b8a6; font-weight:600;">Coming Soon →</span>
-          </div>
-        </div>
-
-        <!-- Subject Box 7 -->
-        <a href="digital-logic.html" class="subject-box" style="border-top: 4px solid #f43f5e; text-decoration:none;">
+        <!-- Subject Box 2: Digital Logic -->
+        <a href="digital-logic.html" class="subject-box" style="border-top: 4px solid #f43f5e;">
           <div class="subject-icon" style="background:rgba(244,63,94,0.1); color:#f43f5e;">🧩</div>
           <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Digital Logic</h3>
           <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Boolean algebra, logic gates, combinational & sequential circuits, and number systems.</p>
           <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
             <span style="font-size:0.8rem; color:#f43f5e; font-weight:600;">Explore Details →</span>
+          </div>
+        </a>
+
+        <!-- Subject Box 3: COA -->
+        <a href="coa.html" class="subject-box" style="border-top: 4px solid #8b5cf6;">
+          <div class="subject-icon" style="background:rgba(139,92,246,0.1); color:#8b5cf6;">💻</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">COA</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Instruction sets, pipelining, and memory hierarchy. Crucial for understanding hardware-software interface.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:#8b5cf6; font-weight:600;">Explore Details →</span>
+          </div>
+        </a>
+
+        <!-- Subject Box 4: Programming & DS -->
+        <a href="programming-ds.html" class="subject-box" style="border-top: 4px solid var(--accent2);">
+          <div class="subject-icon" style="background:rgba(6,214,160,0.1); color:var(--accent2);">⌨️</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Programming & DS</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">C programming, pointers, recursion, and core data structures like Trees and Graphs.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:var(--accent2); font-weight:600;">Explore Details →</span>
+          </div>
+        </a>
+
+        <!-- Subject Box 5: Algorithms -->
+        <a href="algorithms.html" class="subject-box" style="border-top: 4px solid var(--accent);">
+          <div class="subject-icon" style="background:rgba(59,130,246,0.1); color:var(--accent);">🧠</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Algorithms</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Complexity analysis, sorting, searching, Greedy, DP, and Graph algorithms.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:var(--accent); font-weight:600;">Explore Details →</span>
+          </div>
+        </a>
+
+        <!-- Subject Box 6: TOC -->
+        <a href="toc.html" class="subject-box" style="border-top: 4px solid #14b8a6;">
+          <div class="subject-icon" style="background:rgba(20,184,166,0.1); color:#14b8a6;">⚙️</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Theory of Computation</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Automata, regular languages, CFGs, Turing machines, and decidability.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:#14b8a6; font-weight:600;">Explore Details →</span>
+          </div>
+        </a>
+
+        <!-- Subject Box 7: Compilers -->
+        <a href="compiler-design.html" class="subject-box" style="border-top: 4px solid #ec4899;">
+          <div class="subject-icon" style="background:rgba(236,72,153,0.1); color:#ec4899;">🛠️</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Compiler Design</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Lexical & syntax analysis, parsing, intermediate code, and optimization.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:#ec4899; font-weight:600;">Explore Details →</span>
+          </div>
+        </a>
+
+        <!-- Subject Box 8: OS -->
+        <a href="os.html" class="subject-box" style="border-top: 4px solid var(--accent3);">
+          <div class="subject-icon" style="background:rgba(245,158,11,0.1); color:var(--accent3);">🖥️</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Operating Systems</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Process scheduling, concurrency, deadlocks, and memory management.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:var(--accent3); font-weight:600;">Explore Details →</span>
+          </div>
+        </a>
+
+        <!-- Subject Box 9: DBMS -->
+        <a href="dbms.html" class="subject-box" style="border-top: 4px solid var(--accent2);">
+          <div class="subject-icon" style="background:rgba(6,214,160,0.1); color:var(--accent2);">🗄️</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Databases</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">ER-models, SQL queries, normalization, and transaction control.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:var(--accent2); font-weight:600;">Explore Details →</span>
+          </div>
+        </a>
+
+        <!-- Subject Box 10: CN -->
+        <a href="cn.html" class="subject-box" style="border-top: 4px solid #8b5cf6;">
+          <div class="subject-icon" style="background:rgba(139,92,246,0.1); color:#8b5cf6;">🌐</div>
+          <h3 style="font-size:1.2rem; font-weight:700; margin-bottom:1rem; color:var(--text);">Computer Networks</h3>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">OSI layers, TCP/IP, routing, and core application protocols.</p>
+          <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+            <span style="font-size:0.8rem; color:#8b5cf6; font-weight:600;">Explore Details →</span>
           </div>
         </a>
 

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COA — GATE CS Topic Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .topic-page { padding: 8rem 5% 4rem; max-width: 1000px; margin: 0 auto; }
+    .topic-header { margin-bottom: 4rem; }
+    .topic-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 3rem; margin-bottom: 2rem; position: relative; overflow: hidden; }
+    .topic-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--accent); }
+    .topic-weightage { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 0.5rem 1rem; border-radius: 100px; font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; margin-bottom: 1.5rem; }
+    .sub-topics { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; }
+    @media (max-width: 600px) { .sub-topics { grid-template-columns: 1fr; } }
+    .sub-topic-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: all 0.3s; }
+    .sub-topic-box:hover { border-color: var(--accent); transform: translateY(-5px); }
+    .sub-topic-box h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--accent2); }
+    .sub-topic-box p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+    .important-note { background: rgba(245, 158, 11, 0.05); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 12px; padding: 1.5rem; margin-top: 3rem; display: flex; gap: 1rem; align-items: flex-start; }
+    .important-note span { font-size: 1.5rem; }
+    .back-btn { margin-bottom: 2rem; }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="gate-mentorship (1).html#home" class="logo" style="text-decoration:none;">GATE<span>Guide</span><em>.</em></a>
+    <div class="nav-links"><a href="gate-mentorship (1).html#subjects">← Back to Subjects</a></div>
+  </nav>
+
+  <main class="topic-page">
+    <div class="back-btn"><a href="gate-mentorship (1).html#subjects" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem;">← Back to Home</a></div>
+
+    <header class="topic-header">
+      <div class="section-tag">// subject deep-dive</div>
+      <h1 class="section-title">Computer Organization & Architecture</h1>
+      <p class="section-sub">Explore the internal workings of computers, from instruction sets to memory hierarchy.</p>
+    </header>
+
+    <div class="topic-card">
+      <div class="topic-weightage">📊 Average Weightage: 7–9 Marks (5–7 Questions)</div>
+      
+      <div class="sub-topics">
+        <div class="sub-topic-box">
+          <h3>Instruction Set & Addressing Modes</h3>
+          <p>Machine instruction formats and addressing modes like immediate, direct, and indirect addressing.</p>
+        </div>
+        <div class="sub-topic-box">
+          <h3>Processor Components</h3>
+          <p>ALU operations, data path, control unit design, registers, and arithmetic logic units.</p>
+        </div>
+        <div class="sub-topic-box">
+          <h3>Pipelining</h3>
+          <p>Concept of instruction pipelining, types of hazards (data, control, structural), and performance metrics like throughput and speedup.</p>
+        </div>
+        <div class="sub-topic-box">
+          <h3>Memory Hierarchy</h3>
+          <p>Cache memory (levels, mapping), main memory, secondary storage, and virtual memory concepts like paging.</p>
+        </div>
+      </div>
+
+      <div class="important-note">
+        <span>💡</span>
+        <div>
+          <strong style="color:var(--accent3); display:block; margin-bottom:0.4rem;">High-Yield Topics</strong>
+          <p style="font-size:0.9rem; color:var(--muted); line-height:1.6;">Instruction pipelining (including hazard analysis) and memory hierarchy (specifically cache organization) are frequently tested and crucial for a high score.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:4rem;">
+      <h3 style="margin-bottom:1.5rem;">Need help with COA?</h3>
+      <a href="gate-mentorship (1).html#book" class="btn-primary">📅 Book a Doubts Session →</a>
+    </div>
+  </main>
+
+  <footer><p>&copy; 2025 GATEGuide. Built for GATE Aspirants.</p></footer>
+
+  <script>
+    if (localStorage.getItem('gateGuideTheme') === 'light') { document.body.classList.add('light-mode'); }
+  </script>
+</body>
+
+</html>
