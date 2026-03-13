@@ -590,6 +590,7 @@ footer a { color: var(--accent); text-decoration: none; }
 .social-wa:hover     { background:#25d366; border-color:#25d366; box-shadow:0 6px 20px rgba(37,211,102,0.35); }
 .social-li:hover     { background:#0a66c2; border-color:#0a66c2; box-shadow:0 6px 20px rgba(10,102,194,0.35); }
 .social-tg:hover     { background:#229ED9; border-color:#229ED9; box-shadow:0 6px 20px rgba(34,158,217,0.35); }
+.social-yt:hover     { background:#ff0000; border-color:#ff0000; box-shadow:0 6px 20px rgba(255,0,0,0.35); }
 
 /* ── WHATSAPP FLOAT ─────────────────────────────────── */
 .wa-float {
