@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How I Improved My GATE Score in My Second Attempt — GATEGuide</title>
+  <meta name="description"
+    content="Discover the 4 key strategies that helped improve a GATE CS score in the second attempt — smart subject selection, structured revision, PYQ analysis, and mock tests.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --surface: #0f1424;
+      --card: #151b2e;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #e8eaf6;
+      --muted: #8892b0;
+      --accent: #3b82f6;
+      --accent2: #06d6a0;
+      --accent3: #f59e0b;
+    }
+
+    body.light {
+      --bg: #f4f6fb;
+      --surface: #eaecf5;
+      --card: #ffffff;
+      --border: rgba(0, 0, 0, 0.09);
+      --text: #0f172a;
+      --muted: #4a5568;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    #scroll-progress {
+      position: fixed; top: 0; left: 0;
+      height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 9999; transition: width 0.1s linear;
+    }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 5%;
+      background: rgba(10, 14, 26, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    body.light nav { background: rgba(244, 246, 251, 0.85); }
+
+    .logo { font-size: 1.2rem; font-weight: 800; text-decoration: none; color: var(--text); }
+    .logo span { color: var(--accent); }
+    .logo em { color: var(--accent2); font-style: normal; }
+
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+    .back-btn {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 8px; text-decoration: none;
+      font-size: 0.85rem; font-weight: 600;
+      transition: all 0.2s;
+    }
+    .back-btn:hover { background: rgba(59, 130, 246, 0.2); transform: translateX(-2px); }
+
+    .theme-toggle {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 0.4rem 0.6rem;
+      color: var(--text); cursor: pointer; font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .theme-toggle:hover { background: var(--surface); }
+
+    /* ── HERO ── */
+    .article-hero {
+      position: relative;
+      padding: 5rem 5% 4rem;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0a0e1a 0%, #0c1220 50%, #0a0e1a 100%);
+      text-align: center;
+    }
+    body.light .article-hero { background: linear-gradient(135deg, #eef2ff 0%, #f4f6fb 50%, #eef2ff 100%); }
+
+    .article-hero::before {
+      content: '';
+      position: absolute; top: -50%; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .article-hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .article-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(59, 130, 246, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      padding: 0.35rem 1rem; border-radius: 100px;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 1.5rem;
+    }
+    .article-tag::before {
+      content: ''; width: 6px; height: 6px;
+      border-radius: 50%; background: var(--accent);
+      animation: blink 1.5s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+    .article-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800; line-height: 1.2;
+      margin-bottom: 1.5rem;
+      max-width: 760px; margin-left: auto; margin-right: auto;
+    }
+    .highlight-blue  { color: var(--accent); }
+    .highlight-green { color: var(--accent2); }
+
+    .article-meta {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1.5rem; flex-wrap: wrap;
+      font-size: 0.85rem; color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .article-meta span { display: flex; align-items: center; gap: 0.4rem; }
+
+    /* ── FLOATING EMOJIS ── */
+    .float-emoji {
+      position: absolute; font-size: 2rem;
+      opacity: 0.12; pointer-events: none;
+      animation: floatAnim 6s ease-in-out infinite;
+    }
+    .float-emoji:nth-child(1) { top:15%; left:5%; animation-delay:0s; }
+    .float-emoji:nth-child(2) { top:60%; right:6%; animation-delay:2s; font-size:2.5rem; }
+    .float-emoji:nth-child(3) { top:25%; right:12%; animation-delay:4s; }
+    @keyframes floatAnim { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-15px) rotate(5deg)} }
+
+    /* ── ARTICLE BODY ── */
+    .article-container { max-width: 780px; margin: 0 auto; padding: 4rem 5%; }
+
+    .intro-callout {
+      background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(6,214,160,0.06));
+      border: 1px solid rgba(59,130,246,0.2);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px; padding: 1.5rem 2rem;
+      margin-bottom: 3rem;
+      font-size: 1.05rem; line-height: 1.8; color: var(--text);
+    }
+
+    /* ── STRATEGY CARDS ── */
+    .step-card {
+      position: relative; background: var(--card);
+      border: 1px solid var(--border); border-radius: 20px;
+      padding: 2.5rem; margin-bottom: 2.5rem; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .step-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .step-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    }
+    .step-card.blue::before   { background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
+    .step-card.green::before  { background: linear-gradient(90deg, #06d6a0, #3b82f6); }
+    .step-card.purple::before { background: linear-gradient(90deg, #8b5cf6, #ec4899); }
+    .step-card.amber::before  { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+
+    .step-number {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 54px; height: 54px; border-radius: 50%;
+      font-size: 1.4rem; font-weight: 800; margin-bottom: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .step-card.blue   .step-number { background:rgba(59,130,246,0.15);  color:var(--accent);   border:2px solid rgba(59,130,246,0.3); }
+    .step-card.green  .step-number { background:rgba(6,214,160,0.15);   color:var(--accent2);  border:2px solid rgba(6,214,160,0.3); }
+    .step-card.purple .step-number { background:rgba(139,92,246,0.15);  color:#8b5cf6;         border:2px solid rgba(139,92,246,0.3); }
+    .step-card.amber  .step-number { background:rgba(245,158,11,0.15);  color:var(--accent3);  border:2px solid rgba(245,158,11,0.3); }
+
+    .step-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;
+    }
+    .step-card.blue   .step-label { color: var(--accent); }
+    .step-card.green  .step-label { color: var(--accent2); }
+    .step-card.purple .step-label { color: #8b5cf6; }
+    .step-card.amber  .step-label { color: var(--accent3); }
+
+    .step-title {
+      font-size: 1.45rem; font-weight: 700;
+      margin-bottom: 1.2rem; line-height: 1.3; color: var(--text);
+    }
+    .step-body { font-size: 0.97rem; color: var(--muted); line-height: 1.85; }
+    .step-body p { margin-bottom: 1rem; }
+    .step-body p:last-child { margin-bottom: 0; }
+
+    /* ── BULLET LIST ── */
+    .approach-list {
+      list-style: none; margin: 1rem 0;
+    }
+    .approach-list li {
+      display: flex; align-items: center; gap: 0.7rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.93rem; color: var(--muted);
+    }
+    .approach-list li:last-child { border-bottom: none; }
+    .approach-list li::before {
+      content: '→';
+      display: inline-block; min-width: 20px;
+      font-weight: 700; font-size: 0.85rem;
+    }
+    .step-card.blue   .approach-list li::before { color: var(--accent); }
+    .step-card.green  .approach-list li::before { color: var(--accent2); }
+    .step-card.purple .approach-list li::before { color: #8b5cf6; }
+    .step-card.amber  .approach-list li::before { color: var(--accent3); }
+
+    /* ── TAKEAWAY BOX ── */
+    .takeaway-box {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      background: rgba(245,158,11,0.08);
+      border: 1px solid rgba(245,158,11,0.25);
+      border-radius: 10px; padding: 1rem 1.2rem;
+      margin-top: 1.5rem;
+      font-size: 0.9rem; font-weight: 600; color: var(--accent3); line-height: 1.6;
+    }
+    .takeaway-box .icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+    /* ── SECTION DIVIDER ── */
+    .section-divider {
+      display: flex; align-items: center; gap: 1rem;
+      margin: 2rem 0; color: var(--muted);
+      font-size: 0.8rem; font-family: 'JetBrains Mono', monospace;
+    }
+    .section-divider::before, .section-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    /* ── FINAL THOUGHTS ── */
+    .final-thoughts {
+      background: linear-gradient(135deg, rgba(6,214,160,0.06), rgba(59,130,246,0.06));
+      border: 1px solid rgba(6,214,160,0.2);
+      border-radius: 20px; padding: 3rem;
+      margin-top: 3rem; text-align: center;
+    }
+    .final-thoughts h2 { font-size: 1.6rem; font-weight: 800; margin-bottom: 1.5rem; color: var(--text); }
+
+    .final-checklist { list-style: none; text-align: left; max-width: 420px; margin: 0 auto 2rem; }
+    .final-checklist li {
+      display: flex; align-items: center; gap: 0.8rem;
+      padding: 0.7rem 0; font-size: 0.97rem; color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+    .final-checklist li:last-child { border-bottom: none; }
+
+    .check-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(6,214,160,0.15); color: var(--accent2);
+      font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+    }
+    .closing-line {
+      font-size: 1rem; font-weight: 700; color: var(--accent2);
+      font-family: 'JetBrains Mono', monospace; letter-spacing: 0.5px; margin-top: 1rem;
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(6,214,160,0.08));
+      border: 1px solid rgba(59,130,246,0.25);
+      border-radius: 20px; padding: 2.5rem; margin-top: 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1.5rem; flex-wrap: wrap;
+    }
+    .cta-strip-text h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text); }
+    .cta-strip-text p  { font-size: 0.9rem; color: var(--muted); }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      background: linear-gradient(135deg, var(--accent), #6366f1);
+      color: #fff; border: none; border-radius: 10px;
+      font-family: 'Sora', sans-serif; font-size: 0.95rem; font-weight: 600;
+      text-decoration: none; cursor: pointer; transition: all 0.25s; white-space: nowrap;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(59,130,246,0.4); }
+
+    /* ── AUTHOR CARD ── */
+    .author-card {
+      display: flex; align-items: center; gap: 1.5rem;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.5rem 2rem; margin-top: 3rem; flex-wrap: wrap;
+    }
+    .author-avatar {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; flex-shrink: 0;
+    }
+    .author-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; color: var(--text); }
+    .author-info p  { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+    footer {
+      text-align: center; padding: 3rem 5%;
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.85rem; margin-top: 4rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── READING PROGRESS RING ── */
+    .reading-progress {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 48px; height: 48px; z-index: 50;
+    }
+    .progress-ring { transform: rotate(-90deg); }
+    .progress-ring-circle { transition: stroke-dashoffset 0.3s; stroke-linecap: round; }
+    .progress-pct {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.6rem; font-weight: 700;
+      color: var(--accent); font-family: 'JetBrains Mono', monospace;
+    }
+
+    @media (max-width: 600px) {
+      .cta-strip { flex-direction: column; text-align: center; }
+      .article-container { padding: 2rem 1.2rem; }
+      .step-card { padding: 1.8rem 1.5rem; }
+      .final-thoughts { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="scroll-progress"></div>
+
+  <nav>
+    <a href="gate-mentorship (1).html" class="logo">GATE<span>Guide</span><em>.</em></a>
+    <div class="nav-right">
+      <a href="gate-mentorship (1).html#blog" class="back-btn">← Back to Blog</a>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle theme">🌙</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="article-hero">
+    <span class="float-emoji">🚀</span>
+    <span class="float-emoji">📈</span>
+    <span class="float-emoji">🎯</span>
+
+    <div class="article-tag">TIME MANAGEMENT</div>
+
+    <h1 class="article-title">
+      How I Improved My <span class="highlight-blue">GATE</span> Score<br>
+      in My <span class="highlight-green">Second Attempt</span>
+    </h1>
+
+    <div class="article-meta">
+      <span>✍️ By Karan Patel</span>
+      <span>📅 March 2026</span>
+      <span>⏱️ 5 min read</span>
+      <span>🏷️ GATE CS Strategy</span>
+    </div>
+  </section>
+
+  <!-- ARTICLE CONTENT -->
+  <main class="article-container">
+
+    <div class="intro-callout">
+      After my first GATE attempt, I realized that <strong>hard work alone isn't enough</strong> — you
+      need the right strategy. In my second attempt, I made a few key changes that significantly improved
+      my score. Here's exactly what I did differently.
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step-card blue">
+      <div class="step-number">01</div>
+      <div class="step-label">Strategy #1</div>
+      <h2 class="step-title">Focusing on High-Scoring Subjects</h2>
+      <div class="step-body">
+        <p>
+          This time, I prioritized subjects like <strong>Engineering Mathematics</strong>,
+          <strong>Discrete Mathematics</strong>, and other high-weight topics. Instead of avoiding
+          them, I worked on building strong fundamentals and practiced them regularly.
+        </p>
+        <p>
+          These subjects are not only highly scoring but also help strengthen problem-solving skills
+          across other topics.
+        </p>
+      </div>
+      <div class="takeaway-box">
+        <span class="icon">🎯</span>
+        <span><strong>Key Takeaway:</strong> Smart preparation starts with smart subject selection. Know where the marks are.</span>
+      </div>
+    </div>
+
+    <div class="section-divider">// strategy 02</div>
+
+    <!-- STEP 2 -->
+    <div class="step-card green">
+      <div class="step-number">02</div>
+      <div class="step-label">Strategy #2</div>
+      <h2 class="step-title">Structured Revision Strategy</h2>
+      <div class="step-body">
+        <p>
+          One major change I made was implementing a proper revision plan. I didn't just study —
+          I revised consistently. My approach was systematic:
+        </p>
+      </div>
+      <ul class="approach-list">
+        <li>Weekly revision of all studied topics</li>
+        <li>Short notes for quick concept recall</li>
+        <li>Multiple revision cycles before the exam</li>
+      </ul>
+      <div class="step-body" style="margin-top: 1rem;">
+        <p>This helped me retain concepts for longer and improved my confidence during problem-solving.</p>
+      </div>
+      <div class="takeaway-box">
+        <span class="icon">🔁</span>
+        <span><strong>Key Takeaway:</strong> Revision is what separates average preparation from top performance.</span>
+      </div>
+    </div>
+
+    <div class="section-divider">// strategy 03</div>
+
+    <!-- STEP 3 -->
+    <div class="step-card purple">
+      <div class="step-number">03</div>
+      <div class="step-label">Strategy #3</div>
+      <h2 class="step-title">Deep Analysis of PYQs</h2>
+      <div class="step-body">
+        <p>
+          Previous Year Questions (PYQs) became the core of my preparation. Instead of just solving
+          them, I started <strong>analyzing them deeply</strong>. I focused on:
+        </p>
+      </div>
+      <ul class="approach-list">
+        <li>Understanding how questions are framed</li>
+        <li>Identifying repeated concepts and patterns</li>
+        <li>Practicing multiple variations of the same question</li>
+      </ul>
+      <div class="step-body" style="margin-top: 1rem;">
+        <p>This gave me a clear idea of the exam pattern and made me more comfortable with tricky questions.</p>
+      </div>
+      <div class="takeaway-box">
+        <span class="icon">📚</span>
+        <span><strong>Key Takeaway:</strong> PYQs are not just practice — they are the blueprint of GATE.</span>
+      </div>
+    </div>
+
+    <div class="section-divider">// strategy 04</div>
+
+    <!-- STEP 4 -->
+    <div class="step-card amber">
+      <div class="step-number">04</div>
+      <div class="step-label">Strategy #4</div>
+      <h2 class="step-title">Taking Mock Tests Seriously</h2>
+      <div class="step-body">
+        <p>
+          Mock tests played a huge role in my improvement. I treated every mock like the actual exam.
+          From mocks, I learned:
+        </p>
+      </div>
+      <ul class="approach-list">
+        <li>Time management under real exam pressure</li>
+        <li>Maintaining accuracy when stressed</li>
+        <li>Identifying weak areas for targeted improvement</li>
+      </ul>
+      <div class="step-body" style="margin-top: 1rem;">
+        <p>After each test, I analyzed my mistakes and worked on them before the next one.</p>
+      </div>
+      <div class="takeaway-box">
+        <span class="icon">📊</span>
+        <span><strong>Key Takeaway:</strong> Mocks turn preparation into real exam readiness.</span>
+      </div>
+    </div>
+
+    <!-- FINAL THOUGHTS -->
+    <div class="final-thoughts">
+      <h2>✅ Final Thoughts</h2>
+      <p style="color:var(--muted); margin-bottom:2rem; font-size:0.97rem; line-height:1.8;">
+        My second attempt was not about studying <em>more</em> — it was about studying <strong>smarter</strong>.
+        If you apply these strategies, you can see a major improvement in your GATE score too.
+      </p>
+
+      <ul class="final-checklist">
+        <li><span class="check-icon">✓</span> Prioritize <strong>high-scoring subjects</strong></li>
+        <li><span class="check-icon">✓</span> Follow a <strong>structured revision plan</strong></li>
+        <li><span class="check-icon">✓</span> Practice and analyze <strong>PYQs deeply</strong></li>
+        <li><span class="check-icon">✓</span> Take <strong>mock tests seriously</strong></li>
+      </ul>
+
+      <p class="closing-line">// Stay consistent. Trust the process. Results will follow. 🚀</p>
+    </div>
+
+    <!-- CTA STRIP -->
+    <div class="cta-strip">
+      <div class="cta-strip-text">
+        <h3>Want a personalized GATE strategy?</h3>
+        <p>Book a free 1:1 session and build your own improvement plan with a mentor.</p>
+      </div>
+      <a href="gate-mentorship (1).html#book" class="btn-primary">📅 Book Free Session →</a>
+    </div>
+
+    <!-- AUTHOR CARD -->
+    <div class="author-card">
+      <div class="author-avatar">👨‍💻</div>
+      <div class="author-info">
+        <h4>Karan Patel</h4>
+        <p>GATE Qualified CS Student · 1:1 Mentorship for GATE Aspirants<br>
+          Helping students crack GATE CS with targeted strategy and personal guidance.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>
+      <a href="gate-mentorship (1).html">← Back to GATEGuide</a> &nbsp;·&nbsp;
+      Made with ❤️ by a fellow GATE aspirant
+    </p>
+  </footer>
+
+  <!-- READING PROGRESS RING -->
+  <div class="reading-progress">
+    <svg class="progress-ring" width="48" height="48">
+      <circle stroke="rgba(255,255,255,0.1)" stroke-width="4" fill="none" r="20" cx="24" cy="24"/>
+      <circle class="progress-ring-circle" stroke="var(--accent)" stroke-width="4" fill="none"
+        r="20" cx="24" cy="24" id="progress-circle"
+        stroke-dasharray="125.6" stroke-dashoffset="125.6"/>
+    </svg>
+    <div class="progress-pct" id="progress-pct">0%</div>
+  </div>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const pct = Math.round((scrollTop / docHeight) * 100);
+      document.getElementById('scroll-progress').style.width = pct + '%';
+      const offset = 125.6 - (pct / 100) * 125.6;
+      document.getElementById('progress-circle').style.strokeDashoffset = offset;
+      document.getElementById('progress-pct').textContent = pct + '%';
+    });
+
+    const toggleBtn = document.getElementById('theme-toggle');
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light'); toggleBtn.textContent = '☀️';
+    }
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      toggleBtn.textContent = isLight ? '☀️' : '🌙';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>
