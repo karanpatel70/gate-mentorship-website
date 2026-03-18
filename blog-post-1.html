@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 Biggest Mistakes I Made in My First GATE Attempt — GATEGuide</title>
+  <meta name="description"
+    content="Learn from real experience — the 3 biggest strategic mistakes that cost marks in GATE CS, and how to avoid them in your preparation.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ── CSS VARIABLES ── */
+    :root {
+      --bg: #0a0e1a;
+      --surface: #0f1424;
+      --card: #151b2e;
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #e8eaf6;
+      --muted: #8892b0;
+      --accent: #3b82f6;
+      --accent2: #06d6a0;
+      --accent3: #f59e0b;
+      --accent-red: #f43f5e;
+      --accent-purple: #8b5cf6;
+    }
+
+    body.light {
+      --bg: #f4f6fb;
+      --surface: #eaecf5;
+      --card: #ffffff;
+      --border: rgba(0, 0, 0, 0.09);
+      --text: #0f172a;
+      --muted: #4a5568;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Sora', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* ── SCROLL PROGRESS ── */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5%;
+      background: rgba(10, 14, 26, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    body.light nav {
+      background: rgba(244, 246, 251, 0.85);
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .logo em {
+      color: var(--accent2);
+      font-style: normal;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .back-btn:hover {
+      background: rgba(59, 130, 246, 0.2);
+      transform: translateX(-2px);
+    }
+
+    .theme-toggle {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.4rem 0.6rem;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+
+    .theme-toggle:hover {
+      background: var(--surface);
+    }
+
+    /* ── HERO BANNER ── */
+    .article-hero {
+      position: relative;
+      padding: 5rem 5% 4rem;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0a0e1a 0%, #0f1424 50%, #0a0e1a 100%);
+      text-align: center;
+    }
+
+    body.light .article-hero {
+      background: linear-gradient(135deg, #eef2ff 0%, #f4f6fb 50%, #eef2ff 100%);
+    }
+
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .article-hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+
+    .article-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(244, 63, 94, 0.12);
+      color: #f43f5e;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 1.5rem;
+    }
+
+    .article-tag::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #f43f5e;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.2;
+      }
+    }
+
+    .article-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .article-title .highlight-red {
+      color: #f43f5e;
+    }
+
+    .article-title .highlight-blue {
+      color: var(--accent);
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .article-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* ── FLOATING EMOJI DECORATIONS ── */
+    .float-emoji {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.12;
+      pointer-events: none;
+      animation: floatAnim 6s ease-in-out infinite;
+    }
+
+    .float-emoji:nth-child(1) {
+      top: 15%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .float-emoji:nth-child(2) {
+      top: 60%;
+      right: 6%;
+      animation-delay: 2s;
+      font-size: 2.5rem;
+    }
+
+    .float-emoji:nth-child(3) {
+      top: 25%;
+      right: 12%;
+      animation-delay: 4s;
+    }
+
+    @keyframes floatAnim {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-15px) rotate(5deg);
+      }
+    }
+
+    /* ── MAIN CONTENT ── */
+    .article-container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 4rem 5%;
+    }
+
+    /* ── INTRO CALLOUT ── */
+    .intro-callout {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(6, 214, 160, 0.06));
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 3rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    /* ── MISTAKE CARDS ── */
+    .mistake-card {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .mistake-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .mistake-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .mistake-card.red::before {
+      background: linear-gradient(90deg, #f43f5e, #fb923c);
+    }
+
+    .mistake-card.blue::before {
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    }
+
+    .mistake-card.green::before {
+      background: linear-gradient(90deg, #06d6a0, #3b82f6);
+    }
+
+    /* ── MISTAKE NUMBER BADGE ── */
+    .mistake-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .mistake-card.red .mistake-number {
+      background: rgba(244, 63, 94, 0.15);
+      color: #f43f5e;
+      border: 2px solid rgba(244, 63, 94, 0.3);
+    }
+
+    .mistake-card.blue .mistake-number {
+      background: rgba(59, 130, 246, 0.15);
+      color: var(--accent);
+      border: 2px solid rgba(59, 130, 246, 0.3);
+    }
+
+    .mistake-card.green .mistake-number {
+      background: rgba(6, 214, 160, 0.15);
+      color: var(--accent2);
+      border: 2px solid rgba(6, 214, 160, 0.3);
+    }
+
+    /* ── MISTAKE LABEL ── */
+    .mistake-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.5rem;
+    }
+
+    .mistake-card.red .mistake-label {
+      color: #f43f5e;
+    }
+
+    .mistake-card.blue .mistake-label {
+      color: var(--accent);
+    }
+
+    .mistake-card.green .mistake-label {
+      color: var(--accent2);
+    }
+
+    .mistake-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      line-height: 1.3;
+      color: var(--text);
+    }
+
+    .mistake-body {
+      font-size: 0.97rem;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .mistake-body p {
+      margin-bottom: 1rem;
+    }
+
+    .mistake-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── TAKEAWAY BOX ── */
+    .takeaway-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent3);
+      line-height: 1.6;
+    }
+
+    .takeaway-box .icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    /* ── IMPACT LIST ── */
+    .impact-list {
+      list-style: none;
+      margin: 1rem 0;
+    }
+
+    .impact-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .impact-list li:last-child {
+      border-bottom: none;
+    }
+
+    .impact-list li::before {
+      content: '✕';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(244, 63, 94, 0.15);
+      color: #f43f5e;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── FINAL THOUGHTS ── */
+    .final-thoughts {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.06), rgba(139, 92, 246, 0.06));
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 20px;
+      padding: 3rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .final-thoughts h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .final-checklist {
+      list-style: none;
+      text-align: left;
+      max-width: 380px;
+      margin: 0 auto 2rem;
+    }
+
+    .final-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.7rem 0;
+      font-size: 0.97rem;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .final-checklist li:last-child {
+      border-bottom: none;
+    }
+
+    .check-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(6, 214, 160, 0.15);
+      color: var(--accent2);
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .closing-line {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent2);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.5px;
+      margin-top: 1rem;
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 214, 160, 0.08));
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-top: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .cta-strip-text h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .cta-strip-text p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.8rem;
+      background: linear-gradient(135deg, var(--accent), #6366f1);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Sora', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+    }
+
+    /* ── AUTHOR CARD ── */
+    .author-card {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      margin-top: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .author-info h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+      color: var(--text);
+    }
+
+    .author-info p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 3rem 5%;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-top: 4rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .cta-strip {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .article-container {
+        padding: 2rem 1.2rem;
+      }
+
+      .mistake-card {
+        padding: 1.8rem 1.5rem;
+      }
+
+      .final-thoughts {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    /* ── READING PROGRESS ── */
+    .reading-progress {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      z-index: 50;
+    }
+
+    .progress-ring {
+      transform: rotate(-90deg);
+    }
+
+    .progress-ring-circle {
+      transition: stroke-dashoffset 0.3s;
+      stroke-linecap: round;
+    }
+
+    .progress-pct {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- SCROLL TOP PROGRESS BAR -->
+  <div id="scroll-progress"></div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="gate-mentorship (1).html" class="logo">GATE<span>Guide</span><em>.</em></a>
+    <div class="nav-right">
+      <a href="gate-mentorship (1).html#blog" class="back-btn">← Back to Blog</a>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle theme">🌙</button>
+    </div>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <section class="article-hero">
+    <span class="float-emoji">💡</span>
+    <span class="float-emoji">📚</span>
+    <span class="float-emoji">⚠️</span>
+
+    <div class="article-tag">EXAM STRATEGY</div>
+
+    <h1 class="article-title">
+      3 Biggest <span class="highlight-red">Mistakes</span> I Made in My<br>
+      First <span class="highlight-blue">GATE</span> Attempt
+    </h1>
+
+    <div class="article-meta">
+      <span>✍️ By Karan Patel</span>
+      <span>📅 March 2026</span>
+      <span>⏱️ 4 min read</span>
+      <span>🏷️ GATE CS Strategy</span>
+    </div>
+  </section>
+
+  <!-- MAIN ARTICLE CONTENT -->
+  <main class="article-container">
+
+    <!-- INTRO -->
+    <div class="intro-callout">
+      When I look back at my first GATE attempt, I realize that my mistakes were not about
+      intelligence — they were about <strong>strategy</strong>. If you're preparing for GATE,
+      avoiding these three mistakes alone can significantly improve your score.
+    </div>
+
+    <!-- ── MISTAKE 1 ── -->
+    <div class="mistake-card red">
+      <div class="mistake-number">01</div>
+      <div class="mistake-label">Mistake #1</div>
+      <h2 class="mistake-title">Ignoring High-Weight Subjects</h2>
+      <div class="mistake-body">
+        <p>
+          One of my biggest mistakes was neglecting subjects like <strong>Discrete Mathematics</strong>
+          and <strong>Engineering Mathematics</strong>, thinking they were either too tough or less
+          important. In reality, these subjects carry a high weightage and are among the most scoring
+          areas in the exam.
+        </p>
+        <p>
+          By skipping them, I not only lost easy marks but also reduced my overall confidence during the
+          exam. The lesson is simple — never ignore high-weight subjects; master them instead.
+        </p>
+      </div>
+      <div class="takeaway-box">
+        <span class="icon">💡</span>
+        <span><strong>Key Takeaway:</strong> Never ignore high-weight subjects — master them instead. They are your easiest path to a better rank.</span>
+      </div>
+    </div>
+
+    <div class="section-divider">// mistake 02</div>
+
+    <!-- ── MISTAKE 2 ── -->
+    <div class="mistake-card blue">
+      <div class="mistake-number">02</div>
+      <div class="mistake-label">Mistake #2</div>
+      <h2 class="mistake-title">Lack of Proper Revision</h2>
+      <div class="mistake-body">
+        <p>
+          I studied many topics, but I failed to revise them consistently. Without revision, concepts
+          fade quickly — especially in a vast syllabus like GATE.
+        </p>
+        <p>
+          I used to move from one topic to another without strengthening what I had already learned.
+          During the exam, I realized I had "seen" many questions before — but couldn't recall how to
+          solve them.
+        </p>
+      </div>
+      <div class="takeaway-box">
+        <span class="icon">🔁</span>
+        <span><strong>Key Takeaway:</strong> Revision is what turns preparation into performance. Without it, even good study
+          effort goes to waste.</span>
+      </div>
+    </div>
+
+    <div class="section-divider">// mistake 03</div>
+
+    <!-- ── MISTAKE 3 ── -->
+    <div class="mistake-card green">
+      <div class="mistake-number">03</div>
+      <div class="mistake-label">Mistake #3</div>
+      <h2 class="mistake-title">Not Practicing Enough Questions</h2>
+      <div class="mistake-body">
+        <p>
+          Understanding concepts is important — but GATE is ultimately a <strong>problem-solving
+            exam</strong>. I didn't practice enough questions, especially previous year questions and
+          mock tests.
+        </p>
+        <p>Because of this, I suffered from three critical problems:</p>
+      </div>
+
+      <ul class="impact-list">
+        <li>My <strong>speed was low</strong> — I couldn't finish all questions in time</li>
+        <li>My <strong>accuracy was inconsistent</strong> — silly mistakes under pressure</li>
+        <li>I struggled with <strong>time management</strong> — no exam temperament</li>
+      </ul>
+
+      <div class="takeaway-box">
+        <span class="icon">🏋️</span>
+        <span><strong>Key Takeaway:</strong> Practice builds exam temperament. The more you solve, the more confident and
+          efficient you become.</span>
+      </div>
+    </div>
+
+    <!-- ── FINAL THOUGHTS ── -->
+    <div class="final-thoughts">
+      <h2>✅ Final Thoughts</h2>
+      <p style="color: var(--muted); margin-bottom: 2rem; font-size: 0.97rem; line-height: 1.8;">
+        These three mistakes cost me marks, rank, and confidence. But they also taught me
+        <em>what actually works</em> in GATE preparation. If you avoid these, you're already ahead
+        of where I was in my first attempt.
+      </p>
+
+      <ul class="final-checklist">
+        <li>
+          <span class="check-icon">✓</span>
+          Focus on <strong>high-weight subjects</strong>
+        </li>
+        <li>
+          <span class="check-icon">✓</span>
+          Do <strong>regular revision</strong> — never skip it
+        </li>
+        <li>
+          <span class="check-icon">✓</span>
+          Practice <strong>as many questions</strong> as possible
+        </li>
+      </ul>
+
+      <p class="closing-line">// Learn smart. Prepare better. Crack GATE. 🚀</p>
+    </div>
+
+    <!-- ── CTA STRIP ── -->
+    <div class="cta-strip">
+      <div class="cta-strip-text">
+        <h3>Want personalized GATE guidance?</h3>
+        <p>Book a free 1:1 session and avoid these exact mistakes with a mentor who's been there.</p>
+      </div>
+      <a href="gate-mentorship (1).html#book" class="btn-primary">📅 Book Free Session →</a>
+    </div>
+
+    <!-- ── AUTHOR CARD ── -->
+    <div class="author-card">
+      <div class="author-avatar">👨‍💻</div>
+      <div class="author-info">
+        <h4>Karan Patel</h4>
+        <p>GATE Qualified CS Student · 1:1 Mentorship for GATE Aspirants<br>
+          Helping students crack GATE CS with targeted strategy and personal guidance.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>
+      <a href="gate-mentorship (1).html">← Back to GATEGuide</a> &nbsp;·&nbsp;
+      Made with ❤️ by a fellow GATE aspirant
+    </p>
+  </footer>
+
+  <!-- READING PROGRESS RING -->
+  <div class="reading-progress" id="reading-progress" title="Reading progress">
+    <svg class="progress-ring" width="48" height="48">
+      <circle stroke="rgba(255,255,255,0.1)" stroke-width="4" fill="none" r="20" cx="24" cy="24" />
+      <circle class="progress-ring-circle" stroke="var(--accent)" stroke-width="4" fill="none"
+        r="20" cx="24" cy="24" id="progress-circle"
+        stroke-dasharray="125.6" stroke-dashoffset="125.6" />
+    </svg>
+    <div class="progress-pct" id="progress-pct">0%</div>
+  </div>
+
+  <script>
+    // ── SCROLL PROGRESS BAR ──
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const pct = Math.round((scrollTop / docHeight) * 100);
+
+      document.getElementById('scroll-progress').style.width = pct + '%';
+
+      // Reading progress ring
+      const circumference = 125.6;
+      const offset = circumference - (pct / 100) * circumference;
+      document.getElementById('progress-circle').style.strokeDashoffset = offset;
+      document.getElementById('progress-pct').textContent = pct + '%';
+    });
+
+    // ── THEME TOGGLE ──
+    const toggleBtn = document.getElementById('theme-toggle');
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light') { document.body.classList.add('light'); toggleBtn.textContent = '☀️'; }
+
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      toggleBtn.textContent = isLight ? '☀️' : '🌙';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+  </script>
+</body>
+
+</html>
