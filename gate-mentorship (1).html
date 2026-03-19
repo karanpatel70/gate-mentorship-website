@@ -80,13 +80,19 @@
       </div>
       <div style="flex:1; min-width:300px; animation:fadeUp 0.7s ease 0.4s both; position:relative;">
         <!-- YOUTUBE VIDEO SPACE -->
-        <div
-          style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:16px; box-shadow:0 20px 40px rgba(0,0,0,0.4); border:1px solid var(--border);">
-          <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
-            src="https://www.youtube.com/embed/YOUR_VIDEO_ID_HERE" title="GATE Mentorship Intro"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen loading="lazy"></iframe>
-        </div>
+        <a href="https://www.youtube.com/channel/UCwBPKDFu1JU0C_psNbjLPTQ" target="_blank" class="youtube-logo-card">
+          <div class="yt-card-inner">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+            <div class="yt-card-text">
+              <span class="yt-sub-text">Watch & Subscribe</span>
+              <span class="yt-name-text">Official YouTube Channel</span>
+            </div>
+          </div>
+          <div class="yt-glow"></div>
+        </a>
         <div
           style="position:absolute; -z-index:1; top:-20px; right:-20px; width:100%; height:100%; background:linear-gradient(135deg,var(--accent),var(--accent2)); opacity:0.2; filter:blur(40px); border-radius:50%;">
         </div>
@@ -151,27 +157,303 @@
 
   <!-- MENTOR -->
   <section class="mentor-section" id="mentor">
+    <style>
+      /* ── Mentor Section Enhanced Styles ── */
+      .mentor-section { padding: 5rem 5%; }
+      .mentor-hero-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        align-items: flex-start;
+        margin-top: 2.5rem;
+      }
+      .mentor-photo-col {
+        flex: 0 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .mentor-content-col { flex: 1; min-width: 280px; }
+
+      /* Journey headline */
+      .mentor-headline {
+        font-size: clamp(1.5rem, 3vw, 2.1rem);
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 1rem;
+        color: var(--text);
+      }
+      .mentor-headline .rank-old { color: #f87171; }
+      .mentor-headline .rank-new { color: var(--accent2); }
+
+      /* Bio paragraph */
+      .mentor-bio {
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 0.97rem;
+        margin-bottom: 1.5rem;
+      }
+
+      /* GATE Results Table */
+      .gate-results-wrapper {
+        margin: 2rem 0;
+        overflow-x: auto;
+      }
+      .gate-results-title {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        font-family: 'JetBrains Mono', monospace;
+      }
+      .gate-results-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+      }
+      .gate-results-table thead tr {
+        background: linear-gradient(90deg, rgba(59,130,246,0.18), rgba(6,214,160,0.12));
+      }
+      .gate-results-table th {
+        padding: 0.75rem 1rem;
+        text-align: left;
+        font-weight: 700;
+        color: var(--text);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .gate-results-table td {
+        padding: 0.7rem 1rem;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+      }
+      .gate-results-table tr:hover td { background: rgba(59,130,246,0.05); }
+      .gate-results-table .highlight-row td {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .gate-results-table .highlight-row td:nth-child(4) {
+        color: var(--accent2);
+        font-weight: 800;
+        font-size: 1rem;
+      }
+      .badge-rank-jump {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: linear-gradient(135deg, rgba(6,214,160,0.15), rgba(59,130,246,0.1));
+        border: 1px solid rgba(6,214,160,0.35);
+        color: var(--accent2);
+        padding: 0.4rem 1rem;
+        border-radius: 100px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        width: fit-content;
+      }
+
+      /* Help topics */
+      .mentor-help-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+      }
+      .mentor-help-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.55rem;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.88rem;
+        color: var(--muted);
+        transition: border-color 0.25s, color 0.25s;
+      }
+      .mentor-help-item:hover { border-color: var(--accent2); color: var(--text); }
+      .mentor-help-item .hi-dot {
+        width: 7px; height: 7px; border-radius: 50%;
+        background: var(--accent2); flex-shrink: 0; margin-top: 5px;
+      }
+
+      /* Why section */
+      .mentor-why-box {
+        background: linear-gradient(135deg, rgba(59,130,246,0.07), rgba(6,214,160,0.05));
+        border: 1px solid rgba(59,130,246,0.2);
+        border-radius: 14px;
+        padding: 1.5rem;
+        margin-top: 1.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .mentor-why-box::before {
+        content: '"';
+        position: absolute;
+        top: -0.5rem;
+        left: 1rem;
+        font-size: 5rem;
+        color: var(--accent);
+        opacity: 0.08;
+        font-family: Georgia, serif;
+        line-height: 1;
+      }
+      .mentor-why-box p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+        color: var(--muted);
+        position: relative;
+        z-index: 1;
+      }
+      .mentor-why-box .cta-line {
+        margin-top: 1rem;
+        font-weight: 700;
+        color: var(--accent2);
+        font-size: 0.97rem;
+      }
+
+      /* Tags row */
+      .mentor-tags-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.25rem;
+      }
+
+      @media (max-width: 640px) {
+        .mentor-hero-grid { gap: 2rem; }
+        .gate-results-table th, .gate-results-table td { padding: 0.6rem 0.7rem; font-size: 0.82rem; }
+      }
+    </style>
+
     <div class="section-tag">// your mentor</div>
-    <div class="mentor-inner">
-      <a href="https://www.linkedin.com/in/karan-patel-147117259/" target="_blank" title="View LinkedIn Profile">
-        <img src="mentor.png" alt="Mentor" class="mentor-avatar" loading="lazy"
-          style="object-fit:cover; padding:0; background:none; cursor:pointer;">
-      </a>
-      <div>
-        <div class="mentor-name">CS Graduate</div>
-        <div class="mentor-role">GATE Qualified · M.Tech Aspirant</div>
-        <p class="mentor-bio">I recently appeared for GATE (CS/IT) and know exactly what it takes — the right resources,
-          exam pattern, time management, and tackling tough subjects. I want to help students who feel lost or need a
-          clear direction on this journey.</p>
-        <div class="mentor-tags">
-          <span class="tag">Algorithms & DS</span><span class="tag">Operating Systems</span><span
-            class="tag">DBMS</span>
-          <span class="tag">Computer Networks</span><span class="tag">TOC & Compilers</span><span class="tag">Discrete
-            Math</span>
-          <span class="tag">Digital Logic</span><span class="tag">Mock Test Strategy</span>
+    <div class="section-title">Meet Your Mentor</div>
+    <div class="section-sub">From AIR 13,925 to AIR 1,448 in one year — and here to help you do the same.</div>
+
+    <div class="mentor-hero-grid">
+
+      <!-- Photo Column -->
+      <div class="mentor-photo-col">
+        <a href="https://www.linkedin.com/in/karan-patel-147117259/" target="_blank" title="View LinkedIn Profile">
+          <img src="mentor.png" alt="Karan Patel — GATE Mentor" class="mentor-avatar" loading="lazy"
+            style="object-fit:cover; padding:0; background:none; cursor:pointer;">
+        </a>
+        <div style="text-align:center;">
+          <div class="mentor-name">Karan Patel</div>
+          <div class="mentor-role">CS Graduate &nbsp;·&nbsp; GATE CS/DA Qualified</div>
         </div>
       </div>
-    </div>
+
+      <!-- Content Column -->
+      <div class="mentor-content-col">
+
+        <!-- Journey Headline -->
+        <h2 class="mentor-headline">
+          From Rank <span class="rank-old">13,925</span> to Rank <span class="rank-new">1,448</span> —<br>
+          Here's What Changed.
+        </h2>
+
+        <div class="badge-rank-jump">
+          🚀 &nbsp;12,477 rank improvement in a single year
+        </div>
+
+        <p class="mentor-bio">
+          I'm a CS graduate who appeared for GATE twice and learned everything the hard way — so you don't have to.
+          In <strong style="color:var(--text);">GATE 2025</strong>, I scored 34.77 marks with an AIR of <strong style="color:#f87171;">13,925</strong>.
+          I didn't give up. I rebuilt my strategy from scratch, focused on the right subjects, managed my time better,
+          and came back in <strong style="color:var(--text);">GATE 2026</strong> to score 58.04 marks with an AIR of <strong style="color:var(--accent2);">1,448</strong> in CS
+          — a jump of over 12,000 ranks in a single year.
+          <br><br>
+          I know what it feels like to be lost, to study hard and still underperform, and to finally figure out what
+          actually works. That's exactly why I'm here.
+        </p>
+
+        <!-- GATE Results Table -->
+        <div class="gate-results-wrapper">
+          <div class="gate-results-title">📊 My GATE Results — Proof of the Journey</div>
+          <table class="gate-results-table">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Paper</th>
+                <th>Marks / 100</th>
+                <th>AIR</th>
+                <th>GATE Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2025</td>
+                <td>CS/IT</td>
+                <td>34.77</td>
+                <td>13,925</td>
+                <td>407</td>
+              </tr>
+              <tr class="highlight-row">
+                <td>2026</td>
+                <td>CS/IT</td>
+                <td>58.04</td>
+                <td><strong style="color:var(--accent2);">1,448</strong></td>
+                <td><strong style="color:var(--accent2);">678</strong></td>
+              </tr>
+              <tr>
+                <td>2026</td>
+                <td>DA</td>
+                <td>33.00</td>
+                <td>4,886</td>
+                <td>430</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- What I Can Help You With -->
+        <div style="margin-bottom:0.5rem;">
+          <div class="gate-results-title">💬 What I Can Help You With</div>
+          <div class="mentor-help-grid">
+            <div class="mentor-help-item"><span class="hi-dot"></span>Building a subject-wise strategy that actually works</div>
+            <div class="mentor-help-item"><span class="hi-dot"></span>Algorithms &amp; Data Structures, OS, DBMS, CN, TOC, Compilers</div>
+            <div class="mentor-help-item"><span class="hi-dot"></span>Discrete Math &amp; Digital Logic made simple</div>
+            <div class="mentor-help-item"><span class="hi-dot"></span>Mock test analysis &amp; time management</div>
+            <div class="mentor-help-item"><span class="hi-dot"></span>Avoiding the mistakes I made in my first attempt</div>
+          </div>
+        </div>
+
+        <!-- Why Listen to Me -->
+        <div class="mentor-why-box">
+          <div class="gate-results-title" style="margin-bottom:0.6rem;">🎯 Why Listen to Me?</div>
+          <p>
+            I'm not a coaching institute. I'm someone who just went through this, figured out the gap between average
+            and top ranks, and wants to share that roadmap with you — clearly and honestly.
+          </p>
+          <p class="cta-line">
+            If I could go from AIR 13,925 → AIR 1,448 in one year, with the right guidance, you can do it too.
+          </p>
+        </div>
+
+        <!-- Skill Tags -->
+        <div class="mentor-tags-row">
+          <span class="tag">Algorithms &amp; DS</span>
+          <span class="tag">Operating Systems</span>
+          <span class="tag">DBMS</span>
+          <span class="tag">Computer Networks</span>
+          <span class="tag">TOC &amp; Compilers</span>
+          <span class="tag">Discrete Math</span>
+          <span class="tag">Digital Logic</span>
+          <span class="tag">Mock Test Strategy</span>
+          <span class="tag">GATE 2026 CS AIR 1448</span>
+        </div>
+
+      </div><!-- /content col -->
+    </div><!-- /hero grid -->
+
   </section>
   <div class="divider"></div>
 
@@ -1073,6 +1355,91 @@
 
         .blog-card.card-amber .blog-read-link {
           color: var(--accent3);
+        }
+
+        /* YOUTUBE LOGO CARD */
+        .youtube-logo-card {
+          position: relative;
+          display: block;
+          width: 100%;
+          padding-bottom: 56.25%;
+          background: var(--card);
+          border-radius: 16px;
+          border: 1px solid var(--border);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+          overflow: hidden;
+          text-decoration: none;
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .youtube-logo-card:hover {
+          transform: translateY(-10px) scale(1.02);
+          border-color: rgba(220, 38, 38, 0.5);
+          box-shadow: 0 30px 60px rgba(220, 38, 38, 0.15);
+        }
+
+        .yt-card-inner {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 1rem;
+          z-index: 2;
+        }
+
+        .youtube-logo-card svg {
+          width: 80px;
+          height: 80px;
+          color: #ff0000;
+          filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.3));
+          transition: all 0.4s ease;
+        }
+
+        .youtube-logo-card:hover svg {
+          transform: scale(1.2);
+          filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.6));
+        }
+
+        .yt-card-text {
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          gap: 0.2rem;
+        }
+
+        .yt-sub-text {
+          font-size: 0.75rem;
+          font-family: 'JetBrains Mono', monospace;
+          color: var(--muted);
+          text-transform: uppercase;
+          letter-spacing: 2px;
+        }
+
+        .yt-name-text {
+          font-size: 1.1rem;
+          font-weight: 800;
+          color: var(--text);
+        }
+
+        .yt-glow {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 150%;
+          height: 150%;
+          background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+        }
+
+        .youtube-logo-card:hover .yt-glow {
+          opacity: 1;
         }
       </style>
 
