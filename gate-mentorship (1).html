@@ -34,7 +34,6 @@
       <li><a href="#resources">Resources</a></li>
       <li><a href="#subjects">Subjects</a></li>
       <li><a href="#books">Books</a></li>
-      <li><a href="#videos">Videos</a></li>
       <li><a href="#blog">Blog</a></li>
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#book" class="nav-cta">Book Session →</a></li>
@@ -49,7 +48,6 @@
     <a href="#resources" data-action="closeMenu">Free Resources</a>
     <a href="#subjects" data-action="closeMenu">Subjects</a>
     <a href="#books" data-action="closeMenu">Books</a>
-    <a href="#videos" data-action="closeMenu">Videos</a>
     <a href="#blog" data-action="closeMenu">Blog</a>
     <a href="#pricing" data-action="closeMenu">Pricing</a>
     <a href="#book" data-action="closeMenu" style="color:var(--accent);font-weight:700;">📅 Book a Session →</a>
@@ -159,7 +157,10 @@
   <section class="mentor-section" id="mentor">
     <style>
       /* ── Mentor Section Enhanced Styles ── */
-      .mentor-section { padding: 5rem 5%; }
+      .mentor-section {
+        padding: 5rem 5%;
+      }
+
       .mentor-hero-grid {
         display: flex;
         flex-wrap: wrap;
@@ -167,6 +168,7 @@
         align-items: flex-start;
         margin-top: 2.5rem;
       }
+
       .mentor-photo-col {
         flex: 0 0 auto;
         display: flex;
@@ -174,7 +176,11 @@
         align-items: center;
         gap: 1rem;
       }
-      .mentor-content-col { flex: 1; min-width: 280px; }
+
+      .mentor-content-col {
+        flex: 1;
+        min-width: 280px;
+      }
 
       /* Journey headline */
       .mentor-headline {
@@ -184,8 +190,14 @@
         margin-bottom: 1rem;
         color: var(--text);
       }
-      .mentor-headline .rank-old { color: #f87171; }
-      .mentor-headline .rank-new { color: var(--accent2); }
+
+      .mentor-headline .rank-old {
+        color: #f87171;
+      }
+
+      .mentor-headline .rank-new {
+        color: var(--accent2);
+      }
 
       /* Bio paragraph */
       .mentor-bio {
@@ -200,6 +212,7 @@
         margin: 2rem 0;
         overflow-x: auto;
       }
+
       .gate-results-title {
         font-size: 0.8rem;
         text-transform: uppercase;
@@ -209,6 +222,7 @@
         margin-bottom: 0.75rem;
         font-family: 'JetBrains Mono', monospace;
       }
+
       .gate-results-table {
         width: 100%;
         border-collapse: collapse;
@@ -217,9 +231,11 @@
         overflow: hidden;
         border: 1px solid var(--border);
       }
+
       .gate-results-table thead tr {
-        background: linear-gradient(90deg, rgba(59,130,246,0.18), rgba(6,214,160,0.12));
+        background: linear-gradient(90deg, rgba(59, 130, 246, 0.18), rgba(6, 214, 160, 0.12));
       }
+
       .gate-results-table th {
         padding: 0.75rem 1rem;
         text-align: left;
@@ -229,27 +245,34 @@
         text-transform: uppercase;
         letter-spacing: 0.05em;
       }
+
       .gate-results-table td {
         padding: 0.7rem 1rem;
         color: var(--muted);
         border-top: 1px solid var(--border);
       }
-      .gate-results-table tr:hover td { background: rgba(59,130,246,0.05); }
+
+      .gate-results-table tr:hover td {
+        background: rgba(59, 130, 246, 0.05);
+      }
+
       .gate-results-table .highlight-row td {
         color: var(--text);
         font-weight: 600;
       }
+
       .gate-results-table .highlight-row td:nth-child(4) {
         color: var(--accent2);
         font-weight: 800;
         font-size: 1rem;
       }
+
       .badge-rank-jump {
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
-        background: linear-gradient(135deg, rgba(6,214,160,0.15), rgba(59,130,246,0.1));
-        border: 1px solid rgba(6,214,160,0.35);
+        background: linear-gradient(135deg, rgba(6, 214, 160, 0.15), rgba(59, 130, 246, 0.1));
+        border: 1px solid rgba(6, 214, 160, 0.35);
         color: var(--accent2);
         padding: 0.4rem 1rem;
         border-radius: 100px;
@@ -266,6 +289,7 @@
         gap: 0.75rem;
         margin: 1.5rem 0;
       }
+
       .mentor-help-item {
         display: flex;
         align-items: flex-start;
@@ -278,22 +302,32 @@
         color: var(--muted);
         transition: border-color 0.25s, color 0.25s;
       }
-      .mentor-help-item:hover { border-color: var(--accent2); color: var(--text); }
+
+      .mentor-help-item:hover {
+        border-color: var(--accent2);
+        color: var(--text);
+      }
+
       .mentor-help-item .hi-dot {
-        width: 7px; height: 7px; border-radius: 50%;
-        background: var(--accent2); flex-shrink: 0; margin-top: 5px;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--accent2);
+        flex-shrink: 0;
+        margin-top: 5px;
       }
 
       /* Why section */
       .mentor-why-box {
-        background: linear-gradient(135deg, rgba(59,130,246,0.07), rgba(6,214,160,0.05));
-        border: 1px solid rgba(59,130,246,0.2);
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.07), rgba(6, 214, 160, 0.05));
+        border: 1px solid rgba(59, 130, 246, 0.2);
         border-radius: 14px;
         padding: 1.5rem;
         margin-top: 1.5rem;
         position: relative;
         overflow: hidden;
       }
+
       .mentor-why-box::before {
         content: '"';
         position: absolute;
@@ -305,6 +339,7 @@
         font-family: Georgia, serif;
         line-height: 1;
       }
+
       .mentor-why-box p {
         font-size: 0.95rem;
         line-height: 1.8;
@@ -312,6 +347,7 @@
         position: relative;
         z-index: 1;
       }
+
       .mentor-why-box .cta-line {
         margin-top: 1rem;
         font-weight: 700;
@@ -328,8 +364,15 @@
       }
 
       @media (max-width: 640px) {
-        .mentor-hero-grid { gap: 2rem; }
-        .gate-results-table th, .gate-results-table td { padding: 0.6rem 0.7rem; font-size: 0.82rem; }
+        .mentor-hero-grid {
+          gap: 2rem;
+        }
+
+        .gate-results-table th,
+        .gate-results-table td {
+          padding: 0.6rem 0.7rem;
+          font-size: 0.82rem;
+        }
       }
     </style>
 
@@ -366,9 +409,11 @@
 
         <p class="mentor-bio">
           I'm a CS graduate who appeared for GATE twice and learned everything the hard way — so you don't have to.
-          In <strong style="color:var(--text);">GATE 2025</strong>, I scored 34.77 marks with an AIR of <strong style="color:#f87171;">13,925</strong>.
+          In <strong style="color:var(--text);">GATE 2025</strong>, I scored 34.77 marks with an AIR of <strong
+            style="color:#f87171;">13,925</strong>.
           I didn't give up. I rebuilt my strategy from scratch, focused on the right subjects, managed my time better,
-          and came back in <strong style="color:var(--text);">GATE 2026</strong> to score 58.04 marks with an AIR of <strong style="color:var(--accent2);">1,448</strong> in CS
+          and came back in <strong style="color:var(--text);">GATE 2026</strong> to score 58.04 marks with an AIR of
+          <strong style="color:var(--accent2);">1,448</strong> in CS
           — a jump of over 12,000 ranks in a single year.
           <br><br>
           I know what it feels like to be lost, to study hard and still underperform, and to finally figure out what
@@ -418,11 +463,15 @@
         <div style="margin-bottom:0.5rem;">
           <div class="gate-results-title">💬 What I Can Help You With</div>
           <div class="mentor-help-grid">
-            <div class="mentor-help-item"><span class="hi-dot"></span>Building a subject-wise strategy that actually works</div>
-            <div class="mentor-help-item"><span class="hi-dot"></span>Algorithms &amp; Data Structures, OS, DBMS, CN, TOC, Compilers</div>
-            <div class="mentor-help-item"><span class="hi-dot"></span>Discrete Math &amp; Digital Logic made simple</div>
+            <div class="mentor-help-item"><span class="hi-dot"></span>Building a subject-wise strategy that actually
+              works</div>
+            <div class="mentor-help-item"><span class="hi-dot"></span>Algorithms &amp; Data Structures, OS, DBMS, CN,
+              TOC, Compilers</div>
+            <div class="mentor-help-item"><span class="hi-dot"></span>Discrete Math &amp; Digital Logic made simple
+            </div>
             <div class="mentor-help-item"><span class="hi-dot"></span>Mock test analysis &amp; time management</div>
-            <div class="mentor-help-item"><span class="hi-dot"></span>Avoiding the mistakes I made in my first attempt</div>
+            <div class="mentor-help-item"><span class="hi-dot"></span>Avoiding the mistakes I made in my first attempt
+            </div>
           </div>
         </div>
 
@@ -1073,80 +1122,7 @@
     </section>
     <div class="divider"></div>
 
-    <!-- LATEST VIDEOS SECTION -->
-    <section id="videos" style="background:var(--surface); border-top:1px solid var(--border);">
-      <div class="section-tag">// watch & learn</div>
-      <div class="section-title">Latest YouTube Videos</div>
-      <div class="section-sub">Regular GATE prep strategies, chapter summaries, and live QA directly from my channel.
-      </div>
 
-      <div class="resources-grid" style="grid-template-columns:repeat(auto-fit,minmax(320px,1fr));">
-
-        <!-- Video 1 -->
-        <div
-          style="background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:all 0.2s;">
-          <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-            <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
-              src="https://www.youtube.com/embed/YOUR_VIDEO_ID_1" title="GATE Strategy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen loading="lazy"></iframe>
-          </div>
-          <div style="padding:1.5rem;">
-            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">How to start GATE
-              2026 Preparation</h3>
-            <p style="font-size:0.85rem; color:var(--muted); line-height:1.6;">A complete roadmap from day 1 to the
-              final revision phase.</p>
-          </div>
-        </div>
-
-        <!-- Video 2 -->
-        <div
-          style="background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:all 0.2s;">
-          <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-            <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
-              src="https://www.youtube.com/embed/YOUR_VIDEO_ID_2" title="GATE Strategy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen loading="lazy"></iframe>
-          </div>
-          <div style="padding:1.5rem;">
-            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">Top 5 Mistakes
-              Students Make in GATE CS</h3>
-            <p style="font-size:0.85rem; color:var(--muted); line-height:1.6;">Avoid these common pitfalls to boost your
-              score by 10+ marks.</p>
-          </div>
-        </div>
-
-        <!-- Video 3 -->
-        <div
-          style="background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:all 0.2s;">
-          <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-            <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
-              src="https://www.youtube.com/embed/YOUR_VIDEO_ID_3" title="GATE Strategy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen loading="lazy"></iframe>
-          </div>
-          <div style="padding:1.5rem;">
-            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text);">Data Structures:
-              Arrays vs Linked Lists</h3>
-            <p style="font-size:0.85rem; color:var(--muted); line-height:1.6;">Deep dive into time complexity and GATE
-              PYQs.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div style="text-align:center; margin-top:2.5rem;">
-        <a href="https://www.youtube.com/channel/UCwBPKDFu1JU0C_psNbjLPTQ" target="_blank" class="btn-primary"
-          style="background:#dc2626; color:#fff; padding: 0.8rem; border-radius: 8px; line-height: 0; min-width: auto;"
-          title="Subscribe on YouTube">
-          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-            <path
-              d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-          </svg>
-        </a>
-      </div>
-    </section>
-    <div class="divider"></div>
 
     <!-- MINI BLOG SECTION -->
     <section id="blog" style="background:var(--bg); border-top:1px solid var(--border); padding: 5rem 5%;">
@@ -1469,7 +1445,8 @@
           </div>
           <div class="blog-card-body">
             <h3>How I Improved My GATE Score in My Second Attempt</h3>
-            <p>4 key strategies that made all the difference — smart subject selection, structured revision, PYQ deep analysis, and serious mock tests.</p>
+            <p>4 key strategies that made all the difference — smart subject selection, structured revision, PYQ deep
+              analysis, and serious mock tests.</p>
             <div class="blog-read-link">Read Full Article <span>→</span></div>
           </div>
         </a>
@@ -1484,7 +1461,8 @@
           </div>
           <div class="blog-card-body">
             <h3>Mock Tests: Quantity vs Quality – What Actually Improves Your GATE Score</h3>
-            <p>How I went from 42 to 75 marks using a 3-step mock analysis framework — not by giving more tests, but by learning from each one.</p>
+            <p>How I went from 42 to 75 marks using a 3-step mock analysis framework — not by giving more tests, but by
+              learning from each one.</p>
             <div class="blog-read-link">Read Full Article <span>→</span></div>
           </div>
         </a>
